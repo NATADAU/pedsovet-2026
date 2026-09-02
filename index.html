@@ -236,11 +236,21 @@
     .cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
     .code {
       font-weight: 600;
-      font-size: var(--medium);
+      font-size: clamp(40px, 6vw, 64px);
       letter-spacing: 0.04em;
+      line-height: 1;
       color: var(--yellow-100);
       font-variant-numeric: tabular-nums;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .code-note {
+      font-size: var(--body);
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--ink);
+      overflow-wrap: normal;
+      word-break: normal;
+      hyphens: none;
     }
     .phone {
       font-variant-numeric: tabular-nums;
@@ -490,17 +500,15 @@
           <div class="grid cols-3">
             <article class="card">
               <div class="code">СС</div>
-              <h3>Не приходите на работу</h3>
+              <p class="code-note">Если не&nbsp;приходите на&nbsp;работу</p>
             </article>
             <article class="card">
               <div class="code">УП</div>
-              <h3>Больничный</h3>
-              <p>Без ограничений. Без документа — до 3 дней в месяц, но не в один день недели.</p>
+              <p class="code-note">По больничному — без ограничений. Без документа — до 3 дней в&nbsp;месяц, но не&nbsp;в&nbsp;один день недели.</p>
             </article>
             <article class="card">
               <div class="code">К</div>
-              <h3>Командировка или учёба</h3>
-              <p>На которую отправил ЦЛП.</p>
+              <p class="code-note">Командировка или учёба, на&nbsp;которую отправил ЦЛП</p>
             </article>
           </div>
           <div class="grid cols-2">
