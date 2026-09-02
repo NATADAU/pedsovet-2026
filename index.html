@@ -44,14 +44,14 @@
       --line: var(--blue-20);
       --accent: var(--blue-100);
       --pad: 24px;
-      --section: clamp(28px, 5vw, 64px);
+      --section: clamp(28px, 5vw, 48px);
       --radius: 8px;
       --kicker: 16px;
       --body: 16px;
       --medium: 24px;
-      --h3: clamp(24px, 3.2vw, 40px);
-      --h2: clamp(32px, 5vw, 64px);
-      --h1: clamp(40px, 8vw, 96px);
+      --h3: var(--medium);
+      --h2: clamp(28px, 3.6vw, 40px);
+      --h1: clamp(36px, 6vw, 64px);
     }
     * { box-sizing: border-box; }
     html {
@@ -67,20 +67,20 @@
       font-weight: 400;
       line-height: 1.5;
       overflow-x: clip;
-      border-top: 6px solid var(--teal);
-    }
-    a { color: var(--teal); }
-    a:hover, a:focus-visible { color: var(--pink); }
-    .wrap {
-      width: min(1180px, calc(100% - 32px));
-      margin-inline: auto;
     }
     header {
       position: sticky;
       top: 0;
       z-index: 20;
       background: rgba(248, 248, 248, 0.96);
+      border-top: 6px solid var(--teal);
       border-bottom: 1px solid var(--line);
+    }
+    a { color: var(--teal); }
+    a:hover, a:focus-visible { color: var(--pink); }
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin-inline: auto;
     }
     .bar {
       display: flex;
@@ -106,7 +106,7 @@
       color: var(--teal);
       letter-spacing: 0.06em;
     }
-    nav { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+    nav { display: flex; flex-wrap: wrap; gap: 4px 16px; min-width: 0; justify-content: flex-end; }
     nav a {
       color: var(--ink);
       text-decoration: none;
@@ -126,7 +126,7 @@
     .kicker {
       font-weight: 600;
       font-size: var(--body);
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--teal);
       margin: 0 0 8px;
@@ -134,11 +134,24 @@
     .kicker.pink { color: var(--pink-100); }
     .kicker.green { color: var(--green-100); }
     .kicker.yellow { color: var(--yellow-100); }
-    h1, h2, h3 { line-height: 1.15; color: var(--ink); overflow-wrap: break-word; }
+    h1, h2, h3 {
+      line-height: 1.25;
+      color: var(--ink);
+      overflow-wrap: normal;
+      word-break: normal;
+      hyphens: none;
+      text-wrap: balance;
+    }
     h1 { font-size: var(--h1); font-weight: 600; margin: 0 0 8px; }
     h2 { font-size: var(--h2); font-weight: 400; margin: 0 0 8px; }
-    h3 { font-size: var(--h3); font-weight: 400; margin: 0 0 8px; }
-    p { margin: 0; overflow-wrap: break-word; }
+    h3 { font-size: var(--h3); font-weight: 600; margin: 0 0 8px; }
+    p {
+      margin: 0;
+      overflow-wrap: normal;
+      word-break: normal;
+      hyphens: none;
+      text-wrap: pretty;
+    }
     .lead { max-width: 42ch; font-size: var(--medium); }
     .meta { color: var(--muted); margin: 0 0 12px; font-variant-numeric: tabular-nums; font-weight: 300; }
     .hero-copy { display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; }
@@ -164,6 +177,7 @@
       padding: 8px 0;
       border-top: 1px solid rgba(248, 248, 248, 0.25);
       font-size: var(--body);
+      text-wrap: pretty;
     }
     .hero-aside li:first-child { border-top: 0; padding-top: 0; }
     .hero-aside li::before {
@@ -185,6 +199,7 @@
       min-height: 40px;
       display: inline-flex;
       align-items: center;
+      white-space: nowrap;
     }
     .jump a:hover, .jump a:focus-visible {
       background: var(--teal);
@@ -234,6 +249,7 @@
       color: var(--blue-100);
       text-decoration: none;
       display: block;
+      white-space: nowrap;
     }
     .phone + .phone { margin-top: 4px; }
     .phone:hover, .phone:focus-visible { color: var(--pink); }
@@ -289,7 +305,7 @@
     }
     .reveal { opacity: 1; }
 
-    @media (max-width: 1100px) {
+    @media (max-width: 1400px) {
       .menu-btn { display: inline-flex; align-items: center; justify-content: center; }
       nav {
         display: none;
@@ -314,15 +330,19 @@
       header.open nav { display: flex; }
     }
     @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
       .cols-3, .cols-4 { grid-template-columns: 1fr 1fr; }
+      .lead { max-width: none; }
     }
-    @media (max-width: 720px) {
+    @media (max-width: 640px) {
+      :root { --pad: 16px; --medium: 20px; }
       .hero-grid,
       .cols-2,
       .cols-3,
       .cols-4 { grid-template-columns: 1fr; }
       .wrap { width: min(1180px, calc(100% - 24px)); }
-      .lead { max-width: none; }
+      .brand { font-size: 20px; }
+      .phone { font-size: 18px; }
       table, thead, tbody, th, td, tr { display: block; }
       thead { display: none; }
       table {
@@ -394,7 +414,7 @@
           <p class="kicker">Педсовет · ЦЛП</p>
           <h1>Педсовет</h1>
           <p class="meta">31 августа 2026 · 2026/27 учебный год</p>
-          <p class="lead">Татьяна Бондарь. Правила дома, нагрузка, табель и к кому идти за ответом.</p>
+          <p class="lead">Татьяна Бондарь. Правила дома, нагрузка, табель и&nbsp;к&nbsp;кому идти за&nbsp;ответом.</p>
           <div class="jump">
             <a href="#frame">Рамка</a>
             <a href="#timesheet">Табель</a>
@@ -405,7 +425,7 @@
         <aside class="hero-aside">
           <p class="kicker">О чём поговорим</p>
           <ol>
-            <li>Педагогическая рамка: самостоятельность и сопровождение</li>
+            <li>Педагогическая рамка: самостоятельность и&nbsp;сопровождение</li>
             <li>Время и нагрузка: Интерин, премия, табель, больничные</li>
             <li>Дом: посуда, кабинеты, мебель, скотч, фото</li>
             <li>К кому идти: квалификации, заказы, справочник</li>
@@ -425,7 +445,7 @@
         <div class="grid cols-2">
           <article class="card note">
             <h3>Самостоятельность</h3>
-            <p>Чему важно научить наших клиентов, чтобы им было легче становиться самостоятельными.</p>
+            <p>Чему важно научить наших клиентов, чтобы им было легче становиться&nbsp;самостоятельными.</p>
           </article>
           <article class="card note">
             <h3>Сопровождение</h3>
@@ -469,15 +489,17 @@
           <div class="grid cols-3">
             <article class="card">
               <div class="code">СС</div>
-              <h3>Если не приходите на работу</h3>
+              <h3>Не приходите на работу</h3>
             </article>
             <article class="card">
               <div class="code">УП</div>
-              <h3>По больничному — без ограничений. Без документа — до 3 дней в месяц, но не в один день недели.</h3>
+              <h3>Больничный</h3>
+              <p>Без ограничений. Без документа — до 3 дней в месяц, но не в один день недели.</p>
             </article>
             <article class="card">
               <div class="code">К</div>
-              <h3>Командировка или учёба, на которую отправил ЦЛП</h3>
+              <h3>Командировка или учёба</h3>
+              <p>На которую отправил ЦЛП.</p>
             </article>
           </div>
           <div class="grid cols-2">
@@ -851,7 +873,7 @@
       }
     });
 
-    const particles = "в|во|на|по|с|со|к|ко|у|о|об|обо|от|из|изо|за|для|без|до|при|над|под|про|через|между|среди|кроме|ради|и|а|но|или|либо|ни|не|же|бы|ли|да|как|что";
+    const particles = "в|во|на|по|с|со|к|ко|у|о|об|обо|от|из|изо|за|для|без|до|при|и|а|не";
     const orphanRe = new RegExp("(^|[\\s\\u00A0\\(«„\"])(" + particles + ")\\s+", "gi");
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
       acceptNode(node) {
@@ -864,6 +886,7 @@
     while (walker.nextNode()) texts.push(walker.currentNode);
     texts.forEach((n) => {
       n.nodeValue = n.nodeValue.replace(orphanRe, (_, a, b) => a + b + "\u00A0");
+      n.nodeValue = n.nodeValue.replace(/(\S+)\s+(\S+)\s*$/u, "$1\u00A0$2");
     });
 
     const blocks = document.querySelectorAll(".reveal");
