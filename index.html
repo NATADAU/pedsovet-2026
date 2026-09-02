@@ -9,13 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap&subset=cyrillic" rel="stylesheet">
   <style>
-    /*
-      UI-kit ЦЛП:
-      white #F8F8F8, grey #626261, black #2A2A2A
-      blue100/80/20, pink100/80/60, yellow100/80/60, green100/80/60
-      Montserrat Light 300 / Regular 400 / SemiBold 600
-      96 / 64 / 40 / 24 / 16 — на экране через clamp
-    */
     :root {
       --white: #F8F8F8;
       --grey: #626261;
@@ -24,29 +17,17 @@
       --blue-80: #5BBEC9;
       --blue-20: #C7E9ED;
       --pink-100: #E5004F;
-      --pink-80: #DE0066;
-      --pink-60: #EA496D;
       --yellow-100: #F8A600;
-      --yellow-80: #FCBA00;
-      --yellow-60: #FFD602;
       --green-100: #04A634;
-      --green-80: #89BD1E;
-      --green-60: #CCD500;
       --paper: var(--white);
       --card: var(--white);
       --ink: var(--black);
       --muted: var(--grey);
       --teal: var(--blue-100);
-      --teal-80: var(--blue-80);
-      --teal-20: var(--blue-20);
-      --pink: var(--pink-100);
-      --green: var(--green-100);
       --line: var(--blue-20);
-      --accent: var(--blue-100);
       --pad: 24px;
       --section: clamp(28px, 5vw, 48px);
       --radius: 8px;
-      --kicker: 16px;
       --body: 16px;
       --medium: 24px;
       --h3: var(--medium);
@@ -54,10 +35,7 @@
       --h1: clamp(36px, 6vw, 64px);
     }
     * { box-sizing: border-box; }
-    html {
-      scroll-behavior: smooth;
-      overflow-x: clip;
-    }
+    html { scroll-behavior: smooth; overflow-x: clip; }
     body {
       margin: 0;
       background: var(--paper);
@@ -77,7 +55,7 @@
       border-bottom: 1px solid var(--line);
     }
     a { color: var(--teal); }
-    a:hover, a:focus-visible { color: var(--pink); }
+    a:hover, a:focus-visible { color: var(--pink-100); }
     .wrap {
       width: min(1180px, calc(100% - 32px));
       margin-inline: auto;
@@ -95,7 +73,6 @@
       color: var(--ink);
       text-decoration: none;
       font-size: var(--medium);
-      flex: 0 1 auto;
       min-width: 0;
     }
     .brand:hover, .brand:focus-visible { color: var(--teal); }
@@ -112,17 +89,10 @@
       text-decoration: none;
       font-size: var(--body);
       font-weight: 600;
-      letter-spacing: 0.02em;
       padding: 12px 0;
     }
     nav a:hover, nav a:focus-visible { color: var(--teal); }
     .hero { padding: var(--section) 0; }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--pad);
-      align-items: stretch;
-    }
     .kicker {
       font-weight: 600;
       font-size: var(--body);
@@ -131,9 +101,6 @@
       color: var(--teal);
       margin: 0 0 8px;
     }
-    .kicker.pink { color: var(--pink-100); }
-    .kicker.green { color: var(--green-100); }
-    .kicker.yellow { color: var(--yellow-100); }
     h1, h2, h3 {
       line-height: 1.25;
       color: var(--ink);
@@ -152,63 +119,9 @@
       hyphens: none;
       text-wrap: pretty;
     }
-    .lead { max-width: 42ch; font-size: var(--medium); }
+    .lead { max-width: 46ch; font-size: var(--medium); }
     .meta { color: var(--muted); margin: 0 0 12px; font-variant-numeric: tabular-nums; font-weight: 300; }
-    .hero-copy { display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; }
-    .hero-aside {
-      background: var(--teal);
-      color: var(--paper);
-      border-radius: var(--radius);
-      padding: var(--pad);
-      min-width: 0;
-    }
-    .hero-aside .kicker { color: var(--paper); }
-    .hero-aside ol {
-      margin: 8px 0 0;
-      padding: 0;
-      list-style: none;
-      counter-reset: a;
-    }
-    .hero-aside li {
-      counter-increment: a;
-      display: grid;
-      grid-template-columns: 2em 1fr;
-      gap: 8px;
-      padding: 8px 0;
-      border-top: 1px solid rgba(248, 248, 248, 0.25);
-      font-size: var(--body);
-      text-wrap: pretty;
-    }
-    .hero-aside li:first-child { border-top: 0; padding-top: 0; }
-    .hero-aside li::before {
-      content: counter(a, decimal-leading-zero);
-      font-weight: 600;
-      font-variant-numeric: tabular-nums;
-      color: var(--paper);
-    }
-    .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-    .jump a {
-      text-decoration: none;
-      color: var(--teal);
-      background: var(--card);
-      border: 1px solid var(--teal);
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-size: var(--body);
-      font-weight: 600;
-      min-height: 40px;
-      display: inline-flex;
-      align-items: center;
-      white-space: nowrap;
-    }
-    .jump a:hover, .jump a:focus-visible {
-      background: var(--teal);
-      color: var(--paper);
-    }
     section { padding: var(--section) 0; border-top: 1px solid var(--line); }
-    section.wash { background: var(--blue-20); }
-    section.wash-pink { border-top: 4px solid var(--pink-100); }
-    section.wash-green { border-top: 4px solid var(--green-100); }
     .section-head { margin-bottom: var(--pad); }
     .section-head p:last-child { color: var(--muted); }
     .card {
@@ -218,17 +131,6 @@
       padding: var(--pad);
       min-width: 0;
     }
-    .note { border-left: 4px solid var(--blue-100); }
-    .mark-pink { border-left: 4px solid var(--pink-100); }
-    .mark-green { border-left: 4px solid var(--green-100); }
-    .mark-yellow { border-left: 4px solid var(--yellow-100); }
-    .fill-teal {
-      background: var(--blue-100);
-      color: var(--white);
-      border-color: var(--blue-100);
-    }
-    .fill-teal .kicker,
-    .fill-teal h2 { color: var(--paper); }
     .grid { display: grid; gap: var(--pad); align-items: stretch; }
     .grid > * { min-height: 0; }
     .cols-2 { grid-template-columns: 1fr 1fr; }
@@ -240,31 +142,26 @@
       letter-spacing: 0.04em;
       line-height: 1;
       color: var(--yellow-100);
-      font-variant-numeric: tabular-nums;
       margin-bottom: 12px;
     }
     .code-note {
       font-size: var(--body);
-      font-weight: 400;
       line-height: 1.4;
-      color: var(--ink);
-      overflow-wrap: normal;
-      word-break: normal;
-      hyphens: none;
     }
     .phone {
       font-variant-numeric: tabular-nums;
       font-weight: 600;
       font-size: var(--medium);
-      color: var(--blue-100);
+      color: var(--teal);
       text-decoration: none;
       display: block;
       white-space: nowrap;
     }
     .phone + .phone { margin-top: 4px; }
-    .phone:hover, .phone:focus-visible { color: var(--pink); }
+    .phone:hover, .phone:focus-visible { color: var(--pink-100); }
     .disk { font-size: var(--medium); font-weight: 600; }
     .mt { margin-top: var(--pad); }
+    .stack { display: grid; gap: var(--pad); }
     table {
       width: 100%;
       border-collapse: collapse;
@@ -283,30 +180,27 @@
       font-size: var(--body);
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--blue-100);
+      color: var(--teal);
       background: var(--blue-20);
       font-weight: 600;
     }
     tr:last-child td { border-bottom: 0; }
-    .stack { display: grid; gap: var(--pad); }
     footer {
       padding: var(--pad) 0 var(--section);
-      border-top: 4px solid var(--teal);
+      border-top: 1px solid var(--line);
       color: var(--muted);
-      font-size: var(--kicker);
-      background: var(--card);
+      font-size: var(--body);
     }
     .menu-btn {
       display: none;
       font: inherit;
       font-weight: 600;
-      color: var(--blue-100);
+      color: var(--teal);
       background: var(--card);
-      border: 1px solid var(--blue-100);
+      border: 1px solid var(--teal);
       border-radius: var(--radius);
       padding: 10px 14px;
       min-height: 44px;
-      min-width: 44px;
       cursor: pointer;
     }
     .menu-btn:hover, .menu-btn:focus-visible {
@@ -316,7 +210,7 @@
     .reveal { opacity: 1; }
 
     @media (max-width: 1400px) {
-      .menu-btn { display: inline-flex; align-items: center; justify-content: center; }
+      .menu-btn { display: inline-flex; align-items: center; }
       nav {
         display: none;
         position: absolute;
@@ -330,37 +224,29 @@
         z-index: 21;
       }
       nav a {
-        padding: 12px 12px;
+        padding: 12px;
         min-height: 44px;
         display: flex;
         align-items: center;
         border-radius: 6px;
       }
-      nav a:hover, nav a:focus-visible { background: var(--teal-20); }
+      nav a:hover, nav a:focus-visible { background: var(--blue-20); }
       header.open nav { display: flex; }
     }
     @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; }
       .cols-3, .cols-4 { grid-template-columns: 1fr 1fr; }
       .lead { max-width: none; }
     }
     @media (max-width: 640px) {
       :root { --pad: 16px; --medium: 20px; }
-      .hero-grid,
-      .cols-2,
-      .cols-3,
-      .cols-4 { grid-template-columns: 1fr; }
+      .cols-2, .cols-3, .cols-4 { grid-template-columns: 1fr; }
       .wrap { width: min(1180px, calc(100% - 24px)); }
       .brand { font-size: 20px; }
       .phone { font-size: 18px; }
       .lead { font-size: 16px; }
       table, thead, tbody, th, td, tr { display: block; }
       thead { display: none; }
-      table {
-        background: transparent;
-        border: 0;
-        overflow: visible;
-      }
+      table { background: transparent; border: 0; overflow: visible; }
       tbody tr {
         background: var(--card);
         border: 1px solid var(--line);
@@ -368,14 +254,8 @@
         padding: 12px;
         margin-bottom: 12px;
       }
-      tbody td {
-        border: 0;
-        padding: 6px 0;
-      }
-      tbody td:first-child {
-        font-weight: 600;
-        color: var(--teal);
-      }
+      tbody td { border: 0; padding: 6px 0; }
+      tbody td:first-child { font-weight: 600; color: var(--teal); }
       tbody td[data-label]::before {
         content: attr(data-label);
         display: block;
@@ -419,31 +299,10 @@
   </header>
 
   <main id="top">
-    <div class="wrap hero">
-      <div class="hero-grid reveal">
-        <div class="hero-copy">
-          <p class="kicker">Педсовет · ЦЛП</p>
-          <h1>Педсовет</h1>
-          <p class="meta">31 августа 2026 · 2026/27 учебный год</p>
-          <p class="lead">Татьяна Бондарь. Правила&nbsp;дома, нагрузка, табель и&nbsp;к&nbsp;кому идти за&nbsp;ответом.</p>
-          <div class="jump">
-            <a href="#frame">Рамка</a>
-            <a href="#timesheet">Табель</a>
-            <a href="#who">К кому идти</a>
-            <a href="#house">Дом</a>
-          </div>
-        </div>
-        <aside class="hero-aside">
-          <p class="kicker">О чём поговорим</p>
-          <ol>
-            <li>Педагогическая рамка: самостоятельность и&nbsp;сопровождение</li>
-            <li>Время и нагрузка: Интерин, премия, табель, больничные</li>
-            <li>Дом: посуда, кабинеты, мебель, скотч, фото</li>
-            <li>К кому идти: квалификации, заказы, справочник</li>
-            <li>Регистратура и разговоры: первички, чаты, границы</li>
-          </ol>
-        </aside>
-      </div>
+    <div class="wrap hero reveal">
+      <h1>Педсовет</h1>
+      <p class="meta">31 августа 2026 · Татьяна Бондарь</p>
+      <p class="lead">Правила дома, нагрузка, табель и к кому идти за ответом.</p>
     </div>
 
     <section id="frame" class="reveal">
@@ -454,11 +313,11 @@
           <p>Вокруг них собираем педагогическую часть.</p>
         </div>
         <div class="grid cols-2">
-          <article class="card note">
+          <article class="card">
             <h3>Самостоятельность</h3>
-            <p>Чему важно научить наших клиентов, чтобы им было легче становиться&nbsp;самостоятельными.</p>
+            <p>Чему важно научить наших клиентов, чтобы им было легче становиться самостоятельными.</p>
           </article>
-          <article class="card note">
+          <article class="card">
             <h3>Сопровождение</h3>
             <p>Что такое сопровождение и как мы его осуществляем.</p>
           </article>
@@ -469,7 +328,7 @@
     <section id="load" class="reveal">
       <div class="wrap">
         <div class="section-head">
-          <p class="kicker">Время и нагрузка</p>
+          <p class="kicker">Время</p>
           <h2>Нагрузка и Интерин</h2>
         </div>
         <div class="grid cols-3">
@@ -489,10 +348,10 @@
       </div>
     </section>
 
-    <section id="timesheet" class="reveal wash">
+    <section id="timesheet" class="reveal">
       <div class="wrap">
         <div class="section-head">
-          <p class="kicker pink">Табель</p>
+          <p class="kicker">Табель</p>
           <h2>Пропуски — зло</h2>
           <p>Если пропустили свой рабочий день, при заполнении табеля используем код. Сдаём в последний рабочий день месяца.</p>
         </div>
@@ -500,23 +359,23 @@
           <div class="grid cols-3">
             <article class="card">
               <div class="code">СС</div>
-              <p class="code-note">Если не&nbsp;приходите на&nbsp;работу</p>
+              <p class="code-note">Если не приходите на работу</p>
             </article>
             <article class="card">
               <div class="code">УП</div>
-              <p class="code-note">По больничному — без ограничений. Без документа — до 3 дней в&nbsp;месяц, но не&nbsp;в&nbsp;один день недели.</p>
+              <p class="code-note">По больничному — без ограничений. Без документа — до 3 дней в месяц, но не в один день недели.</p>
             </article>
             <article class="card">
               <div class="code">К</div>
-              <p class="code-note">Командировка или учёба, на&nbsp;которую отправил ЦЛП</p>
+              <p class="code-note">Командировка или учёба, на которую отправил ЦЛП</p>
             </article>
           </div>
           <div class="grid cols-2">
-            <article class="card mark-pink">
+            <article class="card">
               <h3>Больничный</h3>
               <p>Сразу пишите Ольге Александровой. Не «когда будет минутка».</p>
             </article>
-            <article class="card note">
+            <article class="card">
               <h3>Выходные и праздники</h3>
               <p>Можно приходить в ЦЛП. Заранее предупредить директора — чтобы внесли в список на эту дату.</p>
             </article>
@@ -528,7 +387,7 @@
     <section id="guard" class="reveal">
       <div class="wrap">
         <div class="section-head">
-          <p class="kicker">Дом</p>
+          <p class="kicker">Охрана</p>
           <h2>Телефон охраны</h2>
         </div>
         <div class="grid cols-2">
@@ -578,16 +437,16 @@
             <p>Старшие педагоги</p>
           </article>
         </div>
-        <div class="card note mt">
+        <div class="card mt">
           <p>Когда выступаете где-либо — говорите, пожалуйста, что работаете в ЦЛП и используйте логотип.</p>
         </div>
       </div>
     </section>
 
-    <section id="qual" class="reveal wash-green">
+    <section id="qual" class="reveal">
       <div class="wrap">
         <div class="section-head">
-          <p class="kicker green">Квалификации</p>
+          <p class="kicker">Квалификации</p>
           <h2>Стажёры и следующая ступень</h2>
         </div>
         <div class="stack">
@@ -602,12 +461,12 @@
             </article>
           </div>
           <div>
-            <p class="kicker green">Поздравляем с переводом</p>
+            <p class="kicker">Поздравляем с переводом</p>
             <div class="grid cols-4 mt">
-              <div class="card mark-green"><h3>Саша Васинская</h3></div>
-              <div class="card mark-green"><h3>Ириса Бояршинова</h3></div>
-              <div class="card mark-green"><h3>Маша Фокина</h3></div>
-              <div class="card mark-green"><h3>Оля Семак</h3></div>
+              <div class="card"><h3>Саша Васинская</h3></div>
+              <div class="card"><h3>Ириса Бояршинова</h3></div>
+              <div class="card"><h3>Маша Фокина</h3></div>
+              <div class="card"><h3>Оля Семак</h3></div>
             </div>
           </div>
         </div>
@@ -617,7 +476,7 @@
     <section id="house" class="reveal">
       <div class="wrap">
         <div class="section-head">
-          <p class="kicker">Дом</p>
+          <p class="kicker">Помещения</p>
           <h2>Ответственные за помещения</h2>
         </div>
         <div class="grid cols-2">
@@ -633,7 +492,7 @@
             <h3>Право кабинета</h3>
             <p>Ответственный может убрать мебель или вещь из кабинета навсегда, если с ним не договорились.</p>
           </article>
-          <article class="card mark-green">
+          <article class="card">
             <h3>Спасибо</h3>
             <p>Спасибо за порядок в помещениях. Это тоже педагогическая работа.</p>
           </article>
@@ -668,17 +527,17 @@
       </div>
     </section>
 
-    <section id="tape" class="reveal wash-pink">
+    <section id="tape" class="reveal">
       <div class="wrap">
         <div class="section-head">
-          <p class="kicker pink">Дом</p>
+          <p class="kicker">Скотч</p>
           <h2>Бумажный скотч</h2>
           <p>Прежде чем что-то приклеить — остановитесь и задумайтесь: как вы это будете снимать и когда.</p>
         </div>
         <div class="grid cols-3">
-          <div class="card mark-pink"><h3>Не клеим на ковёр</h3></div>
-          <div class="card mark-pink"><h3>Не клеим на мягкие игрушки</h3></div>
-          <div class="card mark-pink"><h3>Не клеим на стены</h3></div>
+          <div class="card"><h3>Не клеим на ковёр</h3></div>
+          <div class="card"><h3>Не клеим на мягкие игрушки</h3></div>
+          <div class="card"><h3>Не клеим на стены</h3></div>
         </div>
       </div>
     </section>
@@ -690,7 +549,7 @@
           <h2>Фото и видеосъёмка</h2>
         </div>
         <div class="grid cols-2">
-          <article class="card mark-pink">
+          <article class="card">
             <h3>Гости</h3>
             <p>Студенты, стажёры и другие гости не могут фотографировать детей на свои телефоны.</p>
           </article>
@@ -702,7 +561,7 @@
             <h3>Фотобанк</h3>
             <p>Раз в месяц минимум одно фото от группы с комментарием.</p>
           </article>
-          <article class="card note">
+          <article class="card">
             <h3>Куда выкладывать</h3>
             <p><a class="disk" href="https://disk.360.yandex.ru/d/LlM8qkuCZaxocQ" target="_blank" rel="noopener">На Яндекс Диск</a></p>
           </article>
@@ -713,7 +572,7 @@
     <section id="tools" class="reveal">
       <div class="wrap">
         <div class="section-head">
-          <p class="kicker">Справочник</p>
+          <p class="kicker">Опросники</p>
           <h2>Опросники и шкалы оценок</h2>
         </div>
         <table>
@@ -798,25 +657,21 @@
         <div class="section-head">
           <p class="kicker">Регистратура</p>
           <h2>Первички и консультации</h2>
+          <p>Постарайтесь не назначать первички на понедельник. Первички смотрим парами. Не используем ЦЛП для поиска частных клиентов.</p>
         </div>
-        <div class="stack">
-          <div class="card mark-pink">
-            <p>Постарайтесь не назначать первички на понедельник. Первички смотрим парами. Не используем ЦЛП для поиска частных клиентов.</p>
-          </div>
-          <div class="grid cols-3">
-            <article class="card">
-              <h3>До 4 лет</h3>
-              <p>Время до 12:00</p>
-            </article>
-            <article class="card">
-              <h3>Школьники</h3>
-              <p>Время после 15:00</p>
-            </article>
-            <article class="card">
-              <h3>Суббота</h3>
-              <p>Кто готов смотреть — напишите</p>
-            </article>
-          </div>
+        <div class="grid cols-3">
+          <article class="card">
+            <h3>До 4 лет</h3>
+            <p>Время до 12:00</p>
+          </article>
+          <article class="card">
+            <h3>Школьники</h3>
+            <p>Время после 15:00</p>
+          </article>
+          <article class="card">
+            <h3>Суббота</h3>
+            <p>Кто готов смотреть — напишите</p>
+          </article>
         </div>
       </div>
     </section>
@@ -824,7 +679,7 @@
     <section id="guide" class="reveal">
       <div class="wrap">
         <div class="section-head">
-          <p class="kicker">Справочник</p>
+          <p class="kicker">Куда направить семью</p>
           <h2>Сайт «Особое право» — база организаций</h2>
           <p><a href="https://www.osoboepravo.ru/base" target="_blank" rel="noopener">osoboepravo.ru/base</a></p>
         </div>
@@ -847,7 +702,7 @@
 
     <section id="end" class="reveal">
       <div class="wrap">
-        <div class="card fill-teal">
+        <div class="section-head">
           <p class="kicker">Вопросы</p>
           <h2>У вас остались вопросы?</h2>
           <p>Мы знаем, что понять друг друга бывает непросто. Поэтому не стесняемся переспрашивать.</p>
