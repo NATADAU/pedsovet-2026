@@ -1,13 +1,885 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Материалы педагогического совета ЦЛП, 31 августа 2026 года." />
-    <title>Педсовет ЦЛП — 2026/27</title>
-    <script type="module" crossorigin src="./assets/index-DAjkYerE.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-N6UQ5-tt.css">
-    <link rel="stylesheet" href="./assets/layout-v5.css">
-  </head>
-  <body><div id="root"></div></body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#019BAB">
+  <title>Педсовет · 31 августа 2026 · ЦЛП</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap&subset=cyrillic" rel="stylesheet">
+  <style>
+    /*
+      UI-kit ЦЛП:
+      white #F8F8F8, grey #626261, black #2A2A2A
+      blue100/80/20, pink100/80/60, yellow100/80/60, green100/80/60
+      Montserrat Light 300 / Regular 400 / SemiBold 600
+      96 / 64 / 40 / 24 / 16 — на экране через clamp
+    */
+    :root {
+      --white: #F8F8F8;
+      --grey: #626261;
+      --black: #2A2A2A;
+      --blue-100: #019BAB;
+      --blue-80: #5BBEC9;
+      --blue-20: #C7E9ED;
+      --pink-100: #E5004F;
+      --pink-80: #DE0066;
+      --pink-60: #EA496D;
+      --yellow-100: #F8A600;
+      --yellow-80: #FCBA00;
+      --yellow-60: #FFD602;
+      --green-100: #04A634;
+      --green-80: #89BD1E;
+      --green-60: #CCD500;
+      --paper: var(--white);
+      --card: var(--white);
+      --ink: var(--black);
+      --muted: var(--grey);
+      --teal: var(--blue-100);
+      --teal-80: var(--blue-80);
+      --teal-20: var(--blue-20);
+      --pink: var(--pink-100);
+      --green: var(--green-100);
+      --line: var(--blue-20);
+      --accent: var(--blue-100);
+      --pad: 24px;
+      --section: clamp(28px, 5vw, 64px);
+      --radius: 8px;
+      --kicker: 16px;
+      --body: 16px;
+      --medium: 24px;
+      --h3: clamp(24px, 3.2vw, 40px);
+      --h2: clamp(32px, 5vw, 64px);
+      --h1: clamp(40px, 8vw, 96px);
+    }
+    * { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: clip;
+    }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Montserrat, "Segoe UI", sans-serif;
+      font-size: var(--body);
+      font-weight: 400;
+      line-height: 1.5;
+      overflow-x: clip;
+      border-top: 6px solid var(--teal);
+    }
+    a { color: var(--teal); }
+    a:hover, a:focus-visible { color: var(--pink); }
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin-inline: auto;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(248, 248, 248, 0.96);
+      border-bottom: 1px solid var(--line);
+    }
+    .bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--pad);
+      min-height: 72px;
+      position: relative;
+    }
+    .brand {
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: var(--medium);
+      flex: 0 1 auto;
+      min-width: 0;
+    }
+    .brand:hover, .brand:focus-visible { color: var(--teal); }
+    .brand small {
+      display: block;
+      font-size: var(--body);
+      font-weight: 600;
+      color: var(--teal);
+      letter-spacing: 0.06em;
+    }
+    nav { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+    nav a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: var(--body);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 12px 0;
+    }
+    nav a:hover, nav a:focus-visible { color: var(--teal); }
+    .hero { padding: var(--section) 0; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--pad);
+      align-items: stretch;
+    }
+    .kicker {
+      font-weight: 600;
+      font-size: var(--body);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin: 0 0 8px;
+    }
+    .kicker.pink { color: var(--pink-100); }
+    .kicker.green { color: var(--green-100); }
+    .kicker.yellow { color: var(--yellow-100); }
+    h1, h2, h3 { line-height: 1.15; color: var(--ink); overflow-wrap: break-word; }
+    h1 { font-size: var(--h1); font-weight: 600; margin: 0 0 8px; }
+    h2 { font-size: var(--h2); font-weight: 400; margin: 0 0 8px; }
+    h3 { font-size: var(--h3); font-weight: 400; margin: 0 0 8px; }
+    p { margin: 0; overflow-wrap: break-word; }
+    .lead { max-width: 42ch; font-size: var(--medium); }
+    .meta { color: var(--muted); margin: 0 0 12px; font-variant-numeric: tabular-nums; font-weight: 300; }
+    .hero-copy { display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; }
+    .hero-aside {
+      background: var(--teal);
+      color: var(--paper);
+      border-radius: var(--radius);
+      padding: var(--pad);
+      min-width: 0;
+    }
+    .hero-aside .kicker { color: var(--paper); }
+    .hero-aside ol {
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: a;
+    }
+    .hero-aside li {
+      counter-increment: a;
+      display: grid;
+      grid-template-columns: 2em 1fr;
+      gap: 8px;
+      padding: 8px 0;
+      border-top: 1px solid rgba(248, 248, 248, 0.25);
+      font-size: var(--body);
+    }
+    .hero-aside li:first-child { border-top: 0; padding-top: 0; }
+    .hero-aside li::before {
+      content: counter(a, decimal-leading-zero);
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      color: var(--paper);
+    }
+    .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .jump a {
+      text-decoration: none;
+      color: var(--teal);
+      background: var(--card);
+      border: 1px solid var(--teal);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: var(--body);
+      font-weight: 600;
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .jump a:hover, .jump a:focus-visible {
+      background: var(--teal);
+      color: var(--paper);
+    }
+    section { padding: var(--section) 0; border-top: 1px solid var(--line); }
+    section.wash { background: var(--blue-20); }
+    section.wash-pink { border-top: 4px solid var(--pink-100); }
+    section.wash-green { border-top: 4px solid var(--green-100); }
+    .section-head { margin-bottom: var(--pad); }
+    .section-head p:last-child { color: var(--muted); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--pad);
+      min-width: 0;
+    }
+    .note { border-left: 4px solid var(--blue-100); }
+    .mark-pink { border-left: 4px solid var(--pink-100); }
+    .mark-green { border-left: 4px solid var(--green-100); }
+    .mark-yellow { border-left: 4px solid var(--yellow-100); }
+    .fill-teal {
+      background: var(--blue-100);
+      color: var(--white);
+      border-color: var(--blue-100);
+    }
+    .fill-teal .kicker,
+    .fill-teal h2 { color: var(--paper); }
+    .grid { display: grid; gap: var(--pad); align-items: stretch; }
+    .grid > * { min-height: 0; }
+    .cols-2 { grid-template-columns: 1fr 1fr; }
+    .cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+    .code {
+      font-weight: 600;
+      font-size: var(--medium);
+      letter-spacing: 0.04em;
+      color: var(--yellow-100);
+      font-variant-numeric: tabular-nums;
+      margin-bottom: 8px;
+    }
+    .phone {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      font-size: var(--medium);
+      color: var(--blue-100);
+      text-decoration: none;
+      display: block;
+    }
+    .phone + .phone { margin-top: 4px; }
+    .phone:hover, .phone:focus-visible { color: var(--pink); }
+    .disk { font-size: var(--medium); font-weight: 600; }
+    .mt { margin-top: var(--pad); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th {
+      font-size: var(--body);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--blue-100);
+      background: var(--blue-20);
+      font-weight: 600;
+    }
+    tr:last-child td { border-bottom: 0; }
+    .stack { display: grid; gap: var(--pad); }
+    footer {
+      padding: var(--pad) 0 var(--section);
+      border-top: 4px solid var(--teal);
+      color: var(--muted);
+      font-size: var(--kicker);
+      background: var(--card);
+    }
+    .menu-btn {
+      display: none;
+      font: inherit;
+      font-weight: 600;
+      color: var(--blue-100);
+      background: var(--card);
+      border: 1px solid var(--blue-100);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      min-height: 44px;
+      min-width: 44px;
+      cursor: pointer;
+    }
+    .menu-btn:hover, .menu-btn:focus-visible {
+      background: var(--teal);
+      color: var(--paper);
+    }
+    .reveal { opacity: 1; }
+
+    @media (max-width: 1100px) {
+      .menu-btn { display: inline-flex; align-items: center; justify-content: center; }
+      nav {
+        display: none;
+        position: absolute;
+        left: 0; right: 0; top: 72px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 8px;
+        flex-direction: column;
+        gap: 0;
+        z-index: 21;
+      }
+      nav a {
+        padding: 12px 12px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        border-radius: 6px;
+      }
+      nav a:hover, nav a:focus-visible { background: var(--teal-20); }
+      header.open nav { display: flex; }
+    }
+    @media (max-width: 900px) {
+      .cols-3, .cols-4 { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 720px) {
+      .hero-grid,
+      .cols-2,
+      .cols-3,
+      .cols-4 { grid-template-columns: 1fr; }
+      .wrap { width: min(1180px, calc(100% - 24px)); }
+      .lead { max-width: none; }
+      table, thead, tbody, th, td, tr { display: block; }
+      thead { display: none; }
+      table {
+        background: transparent;
+        border: 0;
+        overflow: visible;
+      }
+      tbody tr {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 12px;
+        margin-bottom: 12px;
+      }
+      tbody td {
+        border: 0;
+        padding: 6px 0;
+      }
+      tbody td:first-child {
+        font-weight: 600;
+        color: var(--teal);
+      }
+      tbody td[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        font-size: var(--body);
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 2px;
+      }
+      tbody td:empty::after { content: "—"; color: var(--muted); }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { opacity: 0; transform: translateY(6px); }
+      .reveal.in { animation: in 200ms ease-out forwards; }
+      @keyframes in { to { opacity: 1; transform: none; } }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap bar">
+      <a class="brand" href="#top">Педсовет
+        <small>ЦЛП · 31.08.2026</small>
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Разделы</button>
+      <nav id="nav">
+        <a href="#frame">Рамка</a>
+        <a href="#load">Нагрузка</a>
+        <a href="#timesheet">Табель</a>
+        <a href="#who">К кому идти</a>
+        <a href="#house">Дом</a>
+        <a href="#photo">Фото</a>
+        <a href="#tools">Опросники</a>
+        <a href="#talk">Разговоры</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div class="hero-grid reveal">
+        <div class="hero-copy">
+          <p class="kicker">Педсовет · ЦЛП</p>
+          <h1>Педсовет</h1>
+          <p class="meta">31 августа 2026 · 2026/27 учебный год</p>
+          <p class="lead">Татьяна Бондарь. Правила дома, нагрузка, табель и к кому идти за ответом.</p>
+          <div class="jump">
+            <a href="#frame">Рамка</a>
+            <a href="#timesheet">Табель</a>
+            <a href="#who">К кому идти</a>
+            <a href="#house">Дом</a>
+          </div>
+        </div>
+        <aside class="hero-aside">
+          <p class="kicker">О чём поговорим</p>
+          <ol>
+            <li>Педагогическая рамка: самостоятельность и сопровождение</li>
+            <li>Время и нагрузка: Интерин, премия, табель, больничные</li>
+            <li>Дом: посуда, кабинеты, мебель, скотч, фото</li>
+            <li>К кому идти: квалификации, заказы, справочник</li>
+            <li>Регистратура и разговоры: первички, чаты, границы</li>
+          </ol>
+        </aside>
+      </div>
+    </div>
+
+    <section id="frame" class="reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Педагогическая рамка</p>
+          <h2>Два вопроса</h2>
+          <p>Вокруг них собираем педагогическую часть.</p>
+        </div>
+        <div class="grid cols-2">
+          <article class="card note">
+            <h3>Самостоятельность</h3>
+            <p>Чему важно научить наших клиентов, чтобы им было легче становиться самостоятельными.</p>
+          </article>
+          <article class="card note">
+            <h3>Сопровождение</h3>
+            <p>Что такое сопровождение и как мы его осуществляем.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="load" class="reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Время и нагрузка</p>
+          <h2>Нагрузка и Интерин</h2>
+        </div>
+        <div class="grid cols-3">
+          <article class="card">
+            <h3>Интерин</h3>
+            <p>Свою нагрузку смотрим в Интерине. Прислать, какая нагрузка в этом году — чтобы каждый видел свою картину.</p>
+          </article>
+          <article class="card">
+            <h3>Руководители групп</h3>
+            <p>Собрание руководителей групп — вторник в 13:15.</p>
+          </article>
+          <article class="card">
+            <h3>Премия</h3>
+            <p>Что учитывается при расчёте премии — отдельный разговор на собрании.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="timesheet" class="reveal wash">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker pink">Табель</p>
+          <h2>Пропуски — зло</h2>
+          <p>Если пропустили свой рабочий день, при заполнении табеля используем код. Сдаём в последний рабочий день месяца.</p>
+        </div>
+        <div class="stack">
+          <div class="grid cols-3">
+            <article class="card">
+              <div class="code">СС</div>
+              <h3>Если не приходите на работу</h3>
+            </article>
+            <article class="card">
+              <div class="code">УП</div>
+              <h3>По больничному — без ограничений. Без документа — до 3 дней в месяц, но не в один день недели.</h3>
+            </article>
+            <article class="card">
+              <div class="code">К</div>
+              <h3>Командировка или учёба, на которую отправил ЦЛП</h3>
+            </article>
+          </div>
+          <div class="grid cols-2">
+            <article class="card mark-pink">
+              <h3>Больничный</h3>
+              <p>Сразу пишите Ольге Александровой. Не «когда будет минутка».</p>
+            </article>
+            <article class="card note">
+              <h3>Выходные и праздники</h3>
+              <p>Можно приходить в ЦЛП. Заранее предупредить директора — чтобы внесли в список на эту дату.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="guard" class="reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Дом</p>
+          <h2>Телефон охраны</h2>
+        </div>
+        <div class="grid cols-2">
+          <article class="card">
+            <h3>Коньково</h3>
+            <a class="phone" href="tel:+74956465066">+7 (495) 646-50-66</a>
+            <a class="phone" href="tel:+74959300001">+7 (495) 930-00-01</a>
+          </article>
+          <article class="card">
+            <h3>Строителей</h3>
+            <a class="phone" href="tel:+74991310683">+7 (499) 131-06-83</a>
+            <a class="phone" href="tel:+74991338447">+7 (499) 133-84-47</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="who" class="reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">К кому идти</p>
+          <h2>Если у вас есть вопрос про…</h2>
+        </div>
+        <div class="grid cols-2">
+          <article class="card">
+            <h3>Лекция, КПК, обучение</h3>
+            <p>Аня Пайкова</p>
+          </article>
+          <article class="card">
+            <h3>Конференции</h3>
+            <p>Ляля Просветова, Аня Кибрик</p>
+          </article>
+          <article class="card">
+            <h3>Проблемы с Интерином</h3>
+            <p>Анна Оськина</p>
+          </article>
+          <article class="card">
+            <h3>Любые вопросы</h3>
+            <p>Старшие педагоги</p>
+          </article>
+          <article class="card">
+            <h3>Если вы хотите поучиться</h3>
+            <p>Катя Сафронова</p>
+          </article>
+          <article class="card">
+            <h3>Если в группе нужны дети</h3>
+            <p>Старшие педагоги</p>
+          </article>
+        </div>
+        <div class="card note mt">
+          <p>Когда выступаете где-либо — говорите, пожалуйста, что работаете в ЦЛП и используйте логотип.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="qual" class="reveal wash-green">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker green">Квалификации</p>
+          <h2>Стажёры и следующая ступень</h2>
+        </div>
+        <div class="stack">
+          <div class="grid cols-2">
+            <article class="card">
+              <h3>Стажёры</h3>
+              <p>У каждого стажёра есть куратор. Если не знаете кто — уточните у Кати Сафроновой или спросите старшего педагога.</p>
+            </article>
+            <article class="card">
+              <h3>Следующая ступень</h3>
+              <p>Если видите, что кого-то пора перевести — пишите Ире Константиновой или старшему педагогу.</p>
+            </article>
+          </div>
+          <div>
+            <p class="kicker green">Поздравляем с переводом</p>
+            <div class="grid cols-4 mt">
+              <div class="card mark-green"><h3>Саша Васинская</h3></div>
+              <div class="card mark-green"><h3>Ириса Бояршинова</h3></div>
+              <div class="card mark-green"><h3>Маша Фокина</h3></div>
+              <div class="card mark-green"><h3>Оля Семак</h3></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="house" class="reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Дом</p>
+          <h2>Ответственные за помещения</h2>
+        </div>
+        <div class="grid cols-2">
+          <article class="card">
+            <h3>До и после</h3>
+            <p>Мебель расставляют до занятия и убирают после те педагоги, которые занимались.</p>
+          </article>
+          <article class="card">
+            <h3>Только на своё занятие</h3>
+            <p>Переносим игрушки и мебель из комнаты в комнату только на своё занятие. Если хочется навсегда — согласовать с ответственным.</p>
+          </article>
+          <article class="card">
+            <h3>Право кабинета</h3>
+            <p>Ответственный может убрать мебель или вещь из кабинета навсегда, если с ним не договорились.</p>
+          </article>
+          <article class="card mark-green">
+            <h3>Спасибо</h3>
+            <p>Спасибо за порядок в помещениях. Это тоже педагогическая работа.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="orders" class="reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Заказы</p>
+          <h2>Как заказывать</h2>
+        </div>
+        <div class="grid cols-2">
+          <article class="card">
+            <h3>Сначала проверить</h3>
+            <p>Нет ли этой вещи в кабинете или в соседнем.</p>
+          </article>
+          <article class="card">
+            <h3>Согласовать</h3>
+            <p>С ответственным за помещение. Без этого не заказываем.</p>
+          </article>
+          <article class="card">
+            <h3>Через Яну</h3>
+            <p>И лучше сильно заранее — не накануне занятия.</p>
+          </article>
+          <article class="card">
+            <h3>Если есть мечты</h3>
+            <p>Пишите Саше Ганьшиной или старшему педагогу. Или Деду Морозу.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tape" class="reveal wash-pink">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker pink">Дом</p>
+          <h2>Бумажный скотч</h2>
+          <p>Прежде чем что-то приклеить — остановитесь и задумайтесь: как вы это будете снимать и когда.</p>
+        </div>
+        <div class="grid cols-3">
+          <div class="card mark-pink"><h3>Не клеим на ковёр</h3></div>
+          <div class="card mark-pink"><h3>Не клеим на мягкие игрушки</h3></div>
+          <div class="card mark-pink"><h3>Не клеим на стены</h3></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="photo" class="reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Фото</p>
+          <h2>Фото и видеосъёмка</h2>
+        </div>
+        <div class="grid cols-2">
+          <article class="card mark-pink">
+            <h3>Гости</h3>
+            <p>Студенты, стажёры и другие гости не могут фотографировать детей на свои телефоны.</p>
+          </article>
+          <article class="card">
+            <h3>Группы</h3>
+            <p>Руководители групп, вспомните, кто у вас за это отвечает.</p>
+          </article>
+          <article class="card">
+            <h3>Фотобанк</h3>
+            <p>Раз в месяц минимум одно фото от группы с комментарием.</p>
+          </article>
+          <article class="card note">
+            <h3>Куда выкладывать</h3>
+            <p><a class="disk" href="https://disk.360.yandex.ru/d/LlM8qkuCZaxocQ" target="_blank" rel="noopener">На Яндекс Диск</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools" class="reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Справочник</p>
+          <h2>Опросники и шкалы оценок</h2>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Методика</th>
+              <th>На что направлена</th>
+              <th>Кто уже пользовался</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>COPM — канадская система оценки деятельности</td>
+              <td data-label="На что направлена"></td>
+              <td data-label="Кто уже пользовался">М. Николаева, О. Бояршинова</td>
+            </tr>
+            <tr>
+              <td>Матрица коммуникации</td>
+              <td data-label="На что направлена">Коммуникативные возможности ребёнка</td>
+              <td data-label="Кто уже пользовался">О. Караневская, О. Бояршинова</td>
+            </tr>
+            <tr>
+              <td>Дорожная карта</td>
+              <td data-label="На что направлена">Коммуникативные возможности ребёнка</td>
+              <td data-label="Кто уже пользовался">М. Яремчук, Е. Вальковская</td>
+            </tr>
+            <tr>
+              <td>Конструктор целей</td>
+              <td data-label="На что направлена"></td>
+              <td data-label="Кто уже пользовался">Е. Просветова</td>
+            </tr>
+            <tr>
+              <td>ICAN</td>
+              <td data-label="На что направлена">Бытовые навыки</td>
+              <td data-label="Кто уже пользовался">Е. Федорова, Н. Мальцева</td>
+            </tr>
+            <tr>
+              <td>Чек-лист готовности к школе</td>
+              <td data-label="На что направлена">Готовность к обучению в школе</td>
+              <td data-label="Кто уже пользовался">Л. Егорова, Т. Бондарь</td>
+            </tr>
+            <tr>
+              <td>Опросник СДВГ</td>
+              <td data-label="На что направлена">Проявления СДВГ</td>
+              <td data-label="Кто уже пользовался">Е. Сафронова, Т. Котляренко</td>
+            </tr>
+            <tr>
+              <td>Опросник по сенсорной интеграции</td>
+              <td data-label="На что направлена"></td>
+              <td data-label="Кто уже пользовался">В. Литвинова, О. Семак</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="talk" class="reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Разговоры</p>
+          <h2>Чаты и неформальное общение</h2>
+        </div>
+        <div class="grid cols-3">
+          <article class="card">
+            <h3>Чат Строителей</h3>
+            <p>Замены, игрушки и прочее по площадке.</p>
+          </article>
+          <article class="card">
+            <h3>Чат Коньково</h3>
+            <p>Замены, игрушки и прочее по площадке.</p>
+          </article>
+          <article class="card">
+            <h3>Разговоры ЦДП</h3>
+            <p>Разговоры — отдельно, не в рабочих чатах.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="intake" class="reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Регистратура</p>
+          <h2>Первички и консультации</h2>
+        </div>
+        <div class="stack">
+          <div class="card mark-pink">
+            <p>Постарайтесь не назначать первички на понедельник. Первички смотрим парами. Не используем ЦЛП для поиска частных клиентов.</p>
+          </div>
+          <div class="grid cols-3">
+            <article class="card">
+              <h3>До 4 лет</h3>
+              <p>Время до 12:00</p>
+            </article>
+            <article class="card">
+              <h3>Школьники</h3>
+              <p>Время после 15:00</p>
+            </article>
+            <article class="card">
+              <h3>Суббота</h3>
+              <p>Кто готов смотреть — напишите</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="guide" class="reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Справочник</p>
+          <h2>Сайт «Особое право» — база организаций</h2>
+          <p><a href="https://www.osoboepravo.ru/base" target="_blank" rel="noopener">osoboepravo.ru/base</a></p>
+        </div>
+        <div class="grid cols-3">
+          <article class="card">
+            <h3>Зачем</h3>
+            <p>Чтобы не держать в голове всю карту города и не отправлять семьи «куда-нибудь».</p>
+          </article>
+          <article class="card">
+            <h3>Как искать</h3>
+            <p>По возрасту, запросу, району — как вы этим справочником пользуетесь.</p>
+          </article>
+          <article class="card">
+            <h3>Когда открывать</h3>
+            <p>На консультации, после первички, когда семья спрашивает «а куда ещё».</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="end" class="reveal">
+      <div class="wrap">
+        <div class="card fill-teal">
+          <p class="kicker">Вопросы</p>
+          <h2>У вас остались вопросы?</h2>
+          <p>Мы знаем, что понять друг друга бывает непросто. Поэтому не стесняемся переспрашивать.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Педсовет · 31 августа 2026 · ЦЛП</p>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector("header");
+    const btn = document.querySelector(".menu-btn");
+    btn.addEventListener("click", () => {
+      const open = header.classList.toggle("open");
+      btn.setAttribute("aria-expanded", String(open));
+    });
+    document.querySelectorAll("nav a").forEach((a) => {
+      a.addEventListener("click", () => {
+        header.classList.remove("open");
+        btn.setAttribute("aria-expanded", "false");
+      });
+    });
+    document.addEventListener("click", (e) => {
+      if (!header.contains(e.target)) {
+        header.classList.remove("open");
+        btn.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    const particles = "в|во|на|по|с|со|к|ко|у|о|об|обо|от|из|изо|за|для|без|до|при|над|под|про|через|между|среди|кроме|ради|и|а|но|или|либо|ни|не|же|бы|ли|да|как|что";
+    const orphanRe = new RegExp("(^|[\\s\\u00A0\\(«„\"])(" + particles + ")\\s+", "gi");
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        const p = node.parentElement;
+        if (!p || /^(SCRIPT|STYLE|TEXTAREA|CODE|PRE)$/.test(p.tagName)) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const texts = [];
+    while (walker.nextNode()) texts.push(walker.currentNode);
+    texts.forEach((n) => {
+      n.nodeValue = n.nodeValue.replace(orphanRe, (_, a, b) => a + b + "\u00A0");
+    });
+
+    const blocks = document.querySelectorAll(".reveal");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      blocks.forEach((el) => el.classList.add("in"));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0.1 });
+      blocks.forEach((el) => io.observe(el));
+    }
+  </script>
+</body>
 </html>
