@@ -315,19 +315,28 @@
       width: min(220px, 100%);
       height: auto;
     }
-    #who .logo-item { margin-top: var(--head-gap); }
+    .logo-plaque {
+      margin-top: var(--head-gap);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      overflow: hidden;
+    }
+    .logo-lead {
+      margin: 0;
+      padding: 16px 20px;
+      font-size: var(--body);
+      line-height: 1.5;
+      color: var(--ink);
+      border-bottom: 1px solid var(--line);
+      text-wrap: wrap;
+    }
+    #who .logo-item { margin-top: 0; border: none; border-radius: 0; }
     #who .logo-item summary {
       grid-template-columns: minmax(0, 1fr) auto;
       align-items: start;
     }
     .logo-summary { min-width: 0; }
-    .logo-note {
-      margin: 8px 0 0;
-      font-weight: 400;
-      color: var(--muted);
-      line-height: 1.45;
-      font-size: 15px;
-    }
     .table-wrap {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
@@ -798,24 +807,24 @@
             <p>Старшие педагоги</p>
           </article>
         </div>
-        <details class="group-item logo-item">
-          <summary>
-            <div class="logo-summary">
+        <div class="logo-plaque">
+          <p class="logo-lead">Когда выступаете где-либо — говорите, пожалуйста, что работаете в ЦЛП и используйте логотип.</p>
+          <details class="group-item logo-item">
+            <summary>
               <span class="group-title">Логотип и бланк организации</span>
-              <p class="logo-note">Когда выступаете где-либо — говорите, пожалуйста, что работаете в ЦЛП и используйте логотип.</p>
+              <span class="group-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="group-body">
+              <div class="logo-preview">
+                <img src="logotip-clp.png" alt="Логотип ЦЛП «Особое детство»" width="220" height="227">
+              </div>
+              <p class="download-row download-row--inline">
+                <a class="download-btn" href="logotip-clp.png" download="logotip-clp.png">Скачать логотип (.png)</a>
+                <a class="download-btn" href="blank-organizacii.docx" download="blank-organizacii.docx">Скачать бланк организации (.docx)</a>
+              </p>
             </div>
-            <span class="group-toggle" aria-hidden="true">+</span>
-          </summary>
-          <div class="group-body">
-            <div class="logo-preview">
-              <img src="logotip-clp.png" alt="Логотип ЦЛП «Особое детство»" width="220" height="227">
-            </div>
-            <p class="download-row download-row--inline">
-              <a class="download-btn" href="logotip-clp.png" download="logotip-clp.png">Скачать логотип (.png)</a>
-              <a class="download-btn" href="blank-organizacii.docx" download="blank-organizacii.docx">Скачать бланк организации (.docx)</a>
-            </p>
-          </div>
-        </details>
+          </details>
+        </div>
       </div>
     </section>
 
