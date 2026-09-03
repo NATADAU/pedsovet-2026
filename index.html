@@ -180,37 +180,35 @@
       border-color: var(--blue-80);
       color: var(--paper);
     }
-    .groups-grid { display: grid; gap: var(--pad); }
-    @media (min-width: 901px) {
-      .groups-grid { grid-template-columns: 1fr 1fr; }
+    .groups-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
-    .group-card h3 { margin-bottom: 16px; }
-    .group-details { margin: 0; display: grid; gap: 14px; }
-    .group-row { min-width: 0; }
-    .group-row dt {
-      font-weight: 600;
+    .groups-table {
+      min-width: 880px;
       font-size: var(--body);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin: 0 0 4px;
+      color: var(--ink);
     }
-    .group-row dd { margin: 0; color: var(--ink); }
-    .group-row dd + dd { margin-top: 4px; }
-    .group-time dd {
-      font-weight: 600;
-      font-variant-numeric: tabular-nums;
+    .groups-table th,
+    .groups-table td {
+      font-size: var(--body);
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.5;
     }
-    .group-phone {
-      font-variant-numeric: tabular-nums;
+    .groups-table th { font-weight: 600; color: var(--teal); }
+    .groups-table strong { font-weight: 600; color: var(--ink); }
+    .groups-table .group-name { font-weight: 600; }
+    .groups-table a {
       font-weight: 600;
       color: var(--teal);
       text-decoration: none;
-      display: inline-block;
+      font-variant-numeric: tabular-nums;
       white-space: nowrap;
     }
-    .group-phone:hover, .group-phone:focus-visible { color: var(--pink-100); }
-    .group-note { color: var(--muted); font-size: var(--body); }
+    .groups-table a:hover,
+    .groups-table a:focus-visible { color: var(--pink-100); }
+    .groups-table .cell-stack > * + * { margin-top: 6px; }
     .mt { margin-top: var(--pad); }
     .stack { display: grid; gap: var(--pad); }
     table {
@@ -318,6 +316,8 @@
         margin-bottom: 2px;
       }
       tbody td:empty::after { content: "—"; color: var(--muted); }
+      .groups-table { min-width: 0; }
+      .groups-wrap { overflow: visible; }
     }
     @media (prefers-reduced-motion: no-preference) {
       .reveal { opacity: 0; transform: translateY(6px); }
@@ -460,128 +460,88 @@
         <p class="download-row">
           <a class="download-btn" href="rabochie-gruppy-2026-2027.docx" download>Скачать расписание (.docx)</a>
         </p>
-        <div class="groups-grid">
-          <article class="card group-card">
-            <h3>Супервизии sbt</h3>
-            <dl class="group-details">
-              <div class="group-row">
-                <dt>О чём</dt>
-                <dd>Супервизионная группа по применению метода ПФА/ТОН. Обсуждаем текущие случаи, как это положено при супервизии в ТОН.</dd>
-              </div>
-              <div class="group-row group-time">
-                <dt>Время</dt>
-                <dd>Чт, 21:30–23:00</dd>
-              </div>
-              <div class="group-row">
-                <dt>Координатор</dt>
-                <dd>Боголюбова-Кузнецова Дарья</dd>
-              </div>
-            </dl>
-          </article>
+        <div class="groups-wrap">
+          <table class="groups-table">
+            <thead>
+              <tr>
+                <th>Название</th>
+                <th>О чём группа</th>
+                <th>Планы на год</th>
+                <th>Время и формат</th>
+                <th>Координатор</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="group-name" data-label="Название">Супервизии sbt</td>
+                <td data-label="О чём группа">Супервизионная группа по применению метода <strong>ПФА/ТОН</strong>. Обсуждаем текущие случаи, как это положено при супервизии в ТОН.</td>
+                <td data-label="Планы на год"></td>
+                <td data-label="Время и формат"><strong>Чт</strong>, <strong>21:30–23:00</strong></td>
+                <td data-label="Координатор"><strong>Боголюбова-Кузнецова Дарья</strong></td>
+              </tr>
+              <tr>
+                <td class="group-name" data-label="Название">Интервизия по арт-терапии</td>
+                <td data-label="О чём группа">Обсуждаем случаи участников в области арт-терапии.</td>
+                <td data-label="Планы на год"></td>
+                <td data-label="Время и формат"><strong>Вторник</strong>, <strong>1 раз в месяц</strong>, <strong>21:30–23:00</strong></td>
+                <td data-label="Координатор"><strong>Боголюбова-Кузнецова Дарья</strong></td>
+              </tr>
 
-          <article class="card group-card">
-            <h3>Интервизия по арт-терапии</h3>
-            <dl class="group-details">
-              <div class="group-row">
-                <dt>О чём</dt>
-                <dd>Обсуждаем случаи участников в области арт-терапии.</dd>
-              </div>
-              <div class="group-row group-time">
-                <dt>Время</dt>
-                <dd>Вторник, 1 раз в месяц, 21:30–23:00</dd>
-              </div>
-            </dl>
-          </article>
+              <tr>
+                <td class="group-name" data-label="Название">Танцы</td>
+                <td data-label="О чём группа">Танцы народов мира: круговые, парные, для детей и для взрослых.</td>
+                <td data-label="Планы на год">Разучить танцы с семинара <strong>Захаровой Имы Юрьевны</strong>; освоить новые — с октября Има обещала раз в месяц показывать новые.</td>
+                <td data-label="Время и формат">
+                  <div class="cell-stack">
+                    <div><strong>2-й понедельник</strong>, 1 раз в месяц, <strong>Коньково</strong>, <strong>18:15–19:15</strong></div>
+                    <div><strong>1-я и 3-я среда</strong>, <strong>Строителей</strong>, <strong>18:00</strong></div>
+                  </div>
+                </td>
+                <td data-label="Координатор">
+                  <div class="cell-stack">
+                    <div><strong>Моржина Елена</strong>, <strong>Красильникова Рита</strong> (Коньково)</div>
+                    <div><a href="tel:+79057415334">8 905 741 53 34</a></div>
+                    <div><strong>Гончарова Женя</strong> (Строителей)</div>
+                    <div><a href="tel:+79167728901">8 916 772 89 01</a></div>
+                  </div>
+                </td>
+              </tr>
 
-          <article class="card group-card">
-            <h3>Танцы</h3>
-            <dl class="group-details">
-              <div class="group-row">
-                <dt>О чём</dt>
-                <dd>Танцы народов мира: круговые, парные, для детей и для взрослых.</dd>
-              </div>
-              <div class="group-row">
-                <dt>Планы на год</dt>
-                <dd>Разучить танцы с семинара Имы Юрьевны Захаровой; освоить новые — с октября Има обещала раз в месяц показывать новые.</dd>
-              </div>
-              <div class="group-row group-time">
-                <dt>Время</dt>
-                <dd>2-й понедельник, 1 раз в месяц, Коньково, 18:15–19:15</dd>
-                <dd>1-я и 3-я среда, Строителей, 18:00</dd>
-              </div>
-              <div class="group-row">
-                <dt>Координаторы</dt>
-                <dd>Моржина Елена и Красильникова Рита <span class="group-note">(Коньково)</span></dd>
-                <dd><a class="group-phone" href="tel:+79057415334">8 905 741 53 34</a></dd>
-                <dd>Гончарова Женя <span class="group-note">(Строителей)</span></dd>
-                <dd><a class="group-phone" href="tel:+79167728901">8 916 772 89 01</a></dd>
-              </div>
-            </dl>
-          </article>
+              <tr>
+                <td class="group-name" data-label="Название">Игровая педагогика и средовой подход</td>
+                <td data-label="О чём группа">Супервизии для тех, кто играет, занимается, сопровождает, вписывает ребёнка: вместе про возможности и ограничения, задачи по развитию, маршрут ребёнка.</td>
+                <td data-label="Планы на год">Сделать обязательными <strong>разборы занятий для стажёров</strong> — в течение года.</td>
+                <td data-label="Время и формат"><strong>2-я и 4-я среда</strong>, <strong>18:00</strong>, <strong>Zoom</strong></td>
+                <td data-label="Координатор">
+                  <div class="cell-stack">
+                    <div><strong>Моржина Елена</strong>, <strong>Захарова Има</strong></div>
+                    <div><a href="tel:+79057415334">8 905 741 53 34</a> (ТГ, WhatsApp)</div>
+                  </div>
+                </td>
+              </tr>
 
-          <article class="card group-card">
-            <h3>Игровая педагогика и средовой подход</h3>
-            <dl class="group-details">
-              <div class="group-row">
-                <dt>О чём</dt>
-                <dd>Супервизии для тех, кто играет, занимается, сопровождает, вписывает ребёнка: вместе про возможности и ограничения, задачи по развитию, маршрут ребёнка.</dd>
-              </div>
-              <div class="group-row">
-                <dt>Планы на год</dt>
-                <dd>Сделать обязательными разборы занятий для стажёров — в течение года.</dd>
-              </div>
-              <div class="group-row group-time">
-                <dt>Время</dt>
-                <dd>2-я и 4-я среда, 18:00, Zoom</dd>
-              </div>
-              <div class="group-row">
-                <dt>Координаторы</dt>
-                <dd>Моржина Е., Захарова И.</dd>
-                <dd><a class="group-phone" href="tel:+79057415334">8 905 741 53 34</a> <span class="group-note">(ТГ, WhatsApp)</span></dd>
-              </div>
-            </dl>
-          </article>
+              <tr>
+                <td class="group-name" data-label="Название">Евангельская группа</td>
+                <td data-label="О чём группа">Совместное чтение и размышление над подобранными отрывками: вместе ставим вопросы и вместе ищем ответы.</td>
+                <td data-label="Планы на год">Читать и размышлять, ходить на тематические встречи и экскурсии (например, в <strong>музей русской иконы</strong>), знакомиться с интересными людьми.</td>
+                <td data-label="Время и формат"><strong>По четвергам</strong>, <strong>Zoom</strong>, <strong>21:30–22:30</strong></td>
+                <td data-label="Координатор">
+                  <div class="cell-stack">
+                    <div><strong>Моржина Елена</strong>, <strong>Фионова Ольга</strong></div>
+                    <div><a href="tel:+79057415334">8 905 741 53 34</a> (ТГ, WhatsApp)</div>
+                  </div>
+                </td>
+              </tr>
 
-          <article class="card group-card">
-            <h3>Евангельская группа</h3>
-            <dl class="group-details">
-              <div class="group-row">
-                <dt>О чём</dt>
-                <dd>Совместное чтение и размышление над подобранными отрывками: вместе ставим вопросы и вместе ищем ответы.</dd>
-              </div>
-              <div class="group-row">
-                <dt>Планы на год</dt>
-                <dd>Читать и размышлять, ходить на тематические встречи и экскурсии (например, в музей русской иконы), знакомиться с интересными людьми.</dd>
-              </div>
-              <div class="group-row group-time">
-                <dt>Время</dt>
-                <dd>По четвергам, Zoom, 21:30–22:30</dd>
-              </div>
-              <div class="group-row">
-                <dt>Координаторы</dt>
-                <dd>Моржина Е., Фионова О.</dd>
-                <dd><a class="group-phone" href="tel:+79057415334">8 905 741 53 34</a> <span class="group-note">(ТГ, WhatsApp)</span></dd>
-              </div>
-            </dl>
-          </article>
-
-          <article class="card group-card">
-            <h3>Дефектология</h3>
-            <dl class="group-details">
-              <div class="group-row">
-                <dt>О чём</dt>
-                <dd>Обсуждаем задачи, методы, приёмы, требования к уровню подготовки детей к школе, содержание и специфику учебных программ.</dd>
-              </div>
-              <div class="group-row">
-                <dt>Планы на год</dt>
-                <dd>Сделать чек-листы по вариантам разных программ. Обсуждать вопросы и задачи, искать хорошие идеи для трудных случаев — для молодых специалистов и тех, кто давно в теме.</dd>
-              </div>
-              <div class="group-row group-time">
-                <dt>Время</dt>
-                <dd>По вторникам, 1 раз в месяц, 20:30–21:30</dd>
-              </div>
-            </dl>
-          </article>
+              <tr>
+                <td class="group-name" data-label="Название">Дефектология</td>
+                <td data-label="О чём группа">Обсуждаем задачи, методы, приёмы, требования к уровню подготовки детей к школе, содержание и специфику учебных программ.</td>
+                <td data-label="Планы на год">Сделать <strong>чек-листы по вариантам разных программ</strong>. Обсуждать вопросы и задачи, искать хорошие идеи для трудных случаев — для молодых специалистов и тех, кто давно в теме.</td>
+                <td data-label="Время и формат"><strong>По вторникам</strong>, <strong>1 раз в месяц</strong>, <strong>20:30–21:30</strong></td>
+                <td data-label="Координатор"><strong>Караневская Ольга</strong></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
