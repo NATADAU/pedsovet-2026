@@ -149,6 +149,38 @@
     .hero-bar .c-green { background: var(--green-100); }
     .hero-bar .c-pink { background: var(--pink-100); }
     h1 .accent { color: var(--teal); font-weight: 600; }
+    .hero-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      column-gap: 0.35em;
+      row-gap: 0.1em;
+      line-height: 1.15;
+    }
+    .hero-title-main { font-weight: 600; }
+    .hero-title-accent { color: var(--teal); font-weight: 600; }
+    .timesheet-deadline {
+      display: block;
+      margin: 0 0 10px;
+      padding: 12px 14px;
+      font-size: var(--medium);
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--ink);
+      background: rgba(248, 166, 0, 0.12);
+      border-left: 3px solid var(--yellow-100);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .timesheet-note { color: var(--muted); line-height: 1.5; }
+    #tools .download-btn {
+      background: var(--green-100);
+      border-color: var(--green-100);
+    }
+    #tools .download-btn:hover,
+    #tools .download-btn:focus-visible {
+      background: var(--green-80);
+      border-color: var(--green-80);
+    }
     .hero::before {
       content: "";
       position: absolute;
@@ -492,6 +524,11 @@
     }
     @media (max-width: 768px) {
       .cols-3 { grid-template-columns: 1fr; }
+      .hero-title {
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 2px;
+      }
     }
     @media (max-width: 640px) {
       :root { --pad: 16px; --gap: 12px; --head-gap: 16px; --medium: 18px; --h3: 18px; --section: 32px; }
@@ -501,7 +538,8 @@
       .brand small { font-size: 13px; }
       .hero { padding: 28px 0 24px; }
       .hero-bar { width: min(160px, 52%); margin-bottom: 12px; }
-      h1 { font-size: clamp(26px, 7.5vw, 34px); }
+      .hero-title-main { font-size: clamp(24px, 6.8vw, 30px); }
+      .hero-title-accent { font-size: clamp(22px, 6.2vw, 28px); }
       .lead { font-size: 16px; line-height: 1.5; }
       .section-head { max-width: none; padding-left: 10px; }
       .cols-2, .cols-3, .cols-4 { grid-template-columns: 1fr; }
@@ -520,6 +558,8 @@
     @media (max-width: 380px) {
       .menu-btn { padding: 8px 12px; font-size: 14px; }
       h1 { font-size: 24px; }
+      .hero-title-main { font-size: 22px; }
+      .hero-title-accent { font-size: 20px; }
     }
     @media (prefers-reduced-motion: no-preference) {
       .reveal { opacity: 0; transform: translateY(14px); }
@@ -578,7 +618,10 @@
         <span class="c-green"></span>
         <span class="c-pink"></span>
       </div>
-      <h1>Педсовет · <span class="accent">памятка ЦЛП</span></h1>
+      <h1 class="hero-title">
+        <span class="hero-title-main">Педсовет ·</span>
+        <span class="hero-title-accent">памятка ЦЛП</span>
+      </h1>
       <p class="meta">31 августа 2026 · Татьяна Бондарь</p>
       <p class="lead">Табель, рабочие группы, заказы, фото и к кому идти за ответом.</p>
     </div>
@@ -587,7 +630,8 @@
       <div class="wrap">
         <div class="section-head">
           <p class="kicker">Табель</p>
-          <p>Если пропустили свой рабочий день, при заполнении табеля используем код. Сдаём в последний рабочий день месяца.</p>
+          <p class="timesheet-deadline">Сдаём в последний рабочий день месяца.</p>
+          <p class="timesheet-note">Если пропустили свой рабочий день, при заполнении табеля используем код.</p>
         </div>
         <div class="stack">
           <div class="grid cols-3">
@@ -914,6 +958,9 @@
           <h2>Опросники и шкалы оценок</h2>
           <p>Методики, которые уже используют коллеги — можно спросить у них.</p>
         </div>
+        <p class="download-row">
+          <a class="download-btn" href="oprosniki-i-shkaly.docx" download>Скачать таблицу (.docx)</a>
+        </p>
         <div class="groups-accordion">
           <details class="group-item">
             <summary>
