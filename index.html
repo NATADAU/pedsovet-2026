@@ -75,6 +75,12 @@
     header.scrolled { box-shadow: var(--shadow); }
     a { color: var(--teal); }
     a:hover, a:focus-visible { color: var(--pink-100); }
+    a.download-btn,
+    a.download-btn:hover,
+    a.download-btn:focus-visible {
+      color: #fff;
+      text-decoration: none;
+    }
     .wrap {
       width: min(1180px, calc(100% - 32px));
       margin-inline: auto;
@@ -286,13 +292,15 @@
     #who .card:hover,
     #who .card:focus-within { border-color: var(--green-80); }
     #who .download-btn {
-      background: var(--green-100);
-      border-color: var(--green-100);
+      background: var(--teal);
+      border-color: var(--teal);
+      box-shadow: 0 2px 8px rgba(1, 155, 171, 0.22);
     }
     #who .download-btn:hover,
     #who .download-btn:focus-visible {
-      background: var(--green-80);
-      border-color: var(--green-80);
+      background: var(--blue-80);
+      border-color: var(--blue-80);
+      box-shadow: var(--shadow);
     }
     .logo-preview {
       display: inline-block;
@@ -308,8 +316,18 @@
       height: auto;
     }
     #who .logo-item { margin-top: var(--head-gap); }
-    #who .logo-item summary { grid-template-columns: minmax(0, 1fr) auto; }
-    #who .logo-item .group-when { display: none; }
+    #who .logo-item summary {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: start;
+    }
+    .logo-summary { min-width: 0; }
+    .logo-note {
+      margin: 8px 0 0;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 15px;
+    }
     .table-wrap {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
@@ -782,11 +800,13 @@
         </div>
         <details class="group-item logo-item">
           <summary>
-            <span class="group-title">Логотип и бланк организации</span>
+            <div class="logo-summary">
+              <span class="group-title">Логотип и бланк организации</span>
+              <p class="logo-note">Когда выступаете где-либо — говорите, пожалуйста, что работаете в ЦЛП и используйте логотип.</p>
+            </div>
             <span class="group-toggle" aria-hidden="true">+</span>
           </summary>
           <div class="group-body">
-            <p>Когда выступаете где-либо — говорите, пожалуйста, что работаете в ЦЛП и используйте логотип.</p>
             <div class="logo-preview">
               <img src="logotip-clp.png" alt="Логотип ЦЛП «Особое детство»" width="220" height="227">
             </div>
