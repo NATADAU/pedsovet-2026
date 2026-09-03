@@ -162,14 +162,10 @@
     .timesheet-deadline {
       display: block;
       margin: 0 0 10px;
-      padding: 12px 14px;
       font-size: var(--medium);
       font-weight: 600;
       line-height: 1.4;
-      color: var(--ink);
-      background: rgba(248, 166, 0, 0.12);
-      border-left: 3px solid var(--yellow-100);
-      border-radius: 0 var(--radius) var(--radius) 0;
+      color: #B87800;
     }
     .timesheet-note { color: var(--muted); line-height: 1.5; }
     #tools .download-btn {
@@ -228,7 +224,7 @@
     }
     .section-head {
       margin-bottom: var(--head-gap);
-      max-width: 58ch;
+      max-width: none;
       padding-left: 12px;
       border-left: 3px solid var(--accent, var(--teal));
     }
@@ -250,7 +246,8 @@
       hyphens: none;
       text-wrap: pretty;
     }
-    .lead { max-width: 42ch; font-size: var(--medium); line-height: 1.45; font-weight: 400; }
+    .lead { max-width: none; font-size: var(--medium); line-height: 1.45; font-weight: 400; text-wrap: wrap; }
+    .section-head > p { text-wrap: wrap; }
     .meta { color: var(--muted); margin: 0 0 14px; font-variant-numeric: tabular-nums; font-weight: 300; font-size: 15px; }
     .section-head p:last-child { color: var(--muted); line-height: 1.5; }
     .section-head .kicker + h2 { margin-top: 2px; }
@@ -288,6 +285,28 @@
     #timesheet .card:focus-within { border-color: var(--yellow-80); }
     #who .card:hover,
     #who .card:focus-within { border-color: var(--green-80); }
+    #who .download-btn {
+      background: var(--green-100);
+      border-color: var(--green-100);
+    }
+    #who .download-btn:hover,
+    #who .download-btn:focus-visible {
+      background: var(--green-80);
+      border-color: var(--green-80);
+    }
+    .logo-preview {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 14px 18px;
+      background: #000;
+      border-radius: var(--radius);
+    }
+    .download-row--inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
     #orders .card:hover,
     #orders .card:focus-within { border-color: var(--pink-20); }
     #photo .card:hover,
@@ -717,6 +736,13 @@
         </div>
         <div class="card mt">
           <p>Когда выступаете где-либо — говорите, пожалуйста, что работаете в ЦЛП и используйте логотип.</p>
+          <div class="logo-preview">
+            <img src="logotip-clp.png" alt="Логотип ЦЛП «Особое детство»" width="220" height="227">
+          </div>
+          <p class="download-row download-row--inline">
+            <a class="download-btn" href="logotip-clp.png" download="logotip-clp.png">Скачать логотип (.png)</a>
+            <a class="download-btn" href="blank-organizacii.docx" download="blank-organizacii.docx">Скачать бланк организации (.docx)</a>
+          </p>
         </div>
       </div>
     </section>
