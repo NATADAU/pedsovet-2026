@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#019BAB">
-  <title>Педсовет · 31 августа 2026 · ЦЛП</title>
+  <title>Памятка педсовета · ЦЛП · 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap&subset=cyrillic" rel="stylesheet">
@@ -17,8 +17,14 @@
       --blue-80: #5BBEC9;
       --blue-20: #C7E9ED;
       --pink-100: #E5004F;
+      --pink-80: #DE0066;
+      --pink-20: #EA496D;
       --yellow-100: #F8A600;
+      --yellow-80: #FCBA00;
+      --yellow-20: #FFD602;
       --green-100: #04A634;
+      --green-80: #89BD1E;
+      --green-20: #CCD500;
       --paper: var(--white);
       --card: #FFFFFF;
       --ink: var(--black);
@@ -42,6 +48,8 @@
     body {
       margin: 0;
       background:
+        radial-gradient(ellipse 70% 45% at 85% 0%, rgba(255, 214, 2, 0.14), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 10% 5%, rgba(204, 213, 0, 0.12), transparent 50%),
         radial-gradient(ellipse 80% 50% at 50% -10%, rgba(199, 233, 237, 0.55), transparent 60%),
         linear-gradient(180deg, #FFFFFF 0%, var(--paper) 100%);
       color: var(--ink);
@@ -120,6 +128,32 @@
       padding: calc(var(--section) + 8px) 0 var(--section);
       position: relative;
     }
+    .hero-bar {
+      display: flex;
+      height: 6px;
+      width: min(280px, 70%);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .hero-bar span { flex: 1; }
+    .hero-bar .c-teal { background: var(--blue-100); }
+    .hero-bar .c-yellow { background: var(--yellow-100); }
+    .hero-bar .c-green { background: var(--green-100); }
+    .hero-bar .c-pink { background: var(--pink-100); }
+    h1 .accent { color: var(--teal); }
+    .hero::before {
+      content: "";
+      position: absolute;
+      left: -5%;
+      bottom: 5%;
+      width: min(240px, 35vw);
+      height: min(240px, 35vw);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(204, 213, 0, 0.16) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
     .hero::after {
       content: "";
       position: absolute;
@@ -137,8 +171,26 @@
       font-size: var(--body);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--teal);
+      color: var(--accent, var(--teal));
       margin: 0 0 8px;
+    }
+    section { padding: var(--section) 0; border-top: 1px solid var(--line); --accent: var(--teal); --accent-soft: rgba(199, 233, 237, 0.35); }
+    #timesheet { --accent: var(--yellow-100); --accent-soft: rgba(248, 166, 0, 0.1); }
+    #guard { --accent: var(--blue-100); --accent-soft: rgba(199, 233, 237, 0.45); }
+    #who { --accent: var(--green-100); --accent-soft: rgba(4, 166, 52, 0.08); }
+    #groups { --accent: var(--blue-80); --accent-soft: rgba(91, 190, 201, 0.14); }
+    #orders { --accent: var(--pink-100); --accent-soft: rgba(229, 0, 79, 0.07); }
+    #photo { --accent: var(--yellow-80); --accent-soft: rgba(252, 186, 0, 0.1); }
+    #tools { --accent: var(--green-80); --accent-soft: rgba(137, 189, 30, 0.1); }
+    #end { --accent: var(--pink-80); --accent-soft: rgba(222, 0, 102, 0.08); }
+    section:nth-of-type(even) {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, var(--accent-soft) 100%);
+    }
+    .section-head {
+      margin-bottom: calc(var(--pad) + 4px);
+      max-width: 62ch;
+      padding-left: 16px;
+      border-left: 4px solid var(--accent, var(--teal));
     }
     h1, h2, h3 {
       line-height: 1.25;
@@ -160,11 +212,6 @@
     }
     .lead { max-width: 46ch; font-size: var(--medium); }
     .meta { color: var(--muted); margin: 0 0 12px; font-variant-numeric: tabular-nums; font-weight: 300; }
-    section { padding: var(--section) 0; border-top: 1px solid var(--line); }
-    section:nth-of-type(even) {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(248, 248, 248, 0.4) 100%);
-    }
-    .section-head { margin-bottom: calc(var(--pad) + 4px); max-width: 62ch; }
     .section-head p:last-child { color: var(--muted); }
     .card {
       background: var(--card);
@@ -195,6 +242,20 @@
       color: var(--yellow-100);
       margin-bottom: 12px;
     }
+    #timesheet .card:hover,
+    #timesheet .card:focus-within { border-color: var(--yellow-80); }
+    #who .card:hover,
+    #who .card:focus-within { border-color: var(--green-80); }
+    #orders .card:hover,
+    #orders .card:focus-within { border-color: var(--pink-20); }
+    #photo .card:hover,
+    #photo .card:focus-within { border-color: var(--yellow-80); }
+    #tools tbody tr:hover { background: rgba(137, 189, 30, 0.12); }
+    #tools th { background: rgba(204, 213, 0, 0.22); color: var(--green-100); }
+    .group-label { color: var(--accent, var(--teal)); }
+    #groups .group-item[open] { border-color: var(--blue-80); }
+    #groups .group-toggle { background: rgba(91, 190, 201, 0.25); }
+    #end .section-head { border-left-color: var(--pink-100); }
     .code-note {
       font-size: var(--body);
       line-height: 1.4;
@@ -322,7 +383,7 @@
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--teal);
+      color: var(--accent, var(--teal));
       margin: 0;
       padding-top: 1px;
     }
@@ -496,8 +557,8 @@
 <body>
   <header>
     <div class="wrap bar">
-      <a class="brand" href="#top">Педсовет
-        <small>ЦЛП · 31.08.2026</small>
+      <a class="brand" href="#top">Памятка
+        <small>ЦЛП · педсовет 31.08.2026</small>
       </a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Разделы</button>
       <nav id="nav">
@@ -514,9 +575,15 @@
 
   <main id="top">
     <div class="wrap hero reveal">
-      <h1>Педсовет</h1>
+      <div class="hero-bar" aria-hidden="true">
+        <span class="c-teal"></span>
+        <span class="c-yellow"></span>
+        <span class="c-green"></span>
+        <span class="c-pink"></span>
+      </div>
+      <h1>Памятка <span class="accent">педсовета</span></h1>
       <p class="meta">31 августа 2026 · Татьяна Бондарь</p>
-      <p class="lead">Табель, рабочие группы, заказы, фото и к кому идти за ответом.</p>
+      <p class="lead">Всё важное с собрания: табель, рабочие группы, заказы, фото и к кому идти за ответом.</p>
     </div>
 
     <section id="timesheet" class="reveal">
@@ -916,7 +983,7 @@
 
   <footer>
     <div class="wrap">
-      <p>Педсовет · 31 августа 2026 · ЦЛП</p>
+      <p>Памятка педсовета · 31 августа 2026 · ЦЛП</p>
     </div>
   </footer>
 
