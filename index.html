@@ -297,9 +297,55 @@
     .logo-preview {
       display: inline-block;
       margin-top: 14px;
-      padding: 14px 18px;
-      background: #000;
+      padding: 16px 20px;
+      background: #fff;
+      border: 1px solid var(--line);
       border-radius: var(--radius);
+    }
+    .logo-preview img {
+      display: block;
+      width: min(220px, 100%);
+      height: auto;
+    }
+    #who .logo-item { margin-top: var(--head-gap); }
+    #who .logo-item summary { grid-template-columns: minmax(0, 1fr) auto; }
+    #who .logo-item .group-when { display: none; }
+    .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+    }
+    .data-table {
+      width: 100%;
+      min-width: 640px;
+      border-collapse: collapse;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    .data-table th,
+    .data-table td {
+      padding: 14px 16px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+    .data-table th {
+      background: rgba(204, 213, 0, 0.18);
+      color: var(--green-100);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+    }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:nth-child(even) td { background: rgba(248, 248, 248, 0.7); }
+    .data-table td:first-child { font-weight: 600; min-width: 220px; }
+    .data-table td:nth-child(2) { color: var(--muted); min-width: 200px; }
+    .data-table td:nth-child(3) { min-width: 180px; }
+    @media (max-width: 640px) {
+      .data-table th,
+      .data-table td { padding: 12px 14px; font-size: 14px; }
     }
     .download-row--inline {
       display: flex;
@@ -734,16 +780,22 @@
             <p>Старшие педагоги</p>
           </article>
         </div>
-        <div class="card mt">
-          <p>Когда выступаете где-либо — говорите, пожалуйста, что работаете в ЦЛП и используйте логотип.</p>
-          <div class="logo-preview">
-            <img src="logotip-clp.png" alt="Логотип ЦЛП «Особое детство»" width="220" height="227">
+        <details class="group-item logo-item">
+          <summary>
+            <span class="group-title">Логотип и бланк организации</span>
+            <span class="group-toggle" aria-hidden="true">+</span>
+          </summary>
+          <div class="group-body">
+            <p>Когда выступаете где-либо — говорите, пожалуйста, что работаете в ЦЛП и используйте логотип.</p>
+            <div class="logo-preview">
+              <img src="logotip-clp.png" alt="Логотип ЦЛП «Особое детство»" width="220" height="227">
+            </div>
+            <p class="download-row download-row--inline">
+              <a class="download-btn" href="logotip-clp.png" download="logotip-clp.png">Скачать логотип (.png)</a>
+              <a class="download-btn" href="blank-organizacii.docx" download="blank-organizacii.docx">Скачать бланк организации (.docx)</a>
+            </p>
           </div>
-          <p class="download-row download-row--inline">
-            <a class="download-btn" href="logotip-clp.png" download="logotip-clp.png">Скачать логотип (.png)</a>
-            <a class="download-btn" href="blank-organizacii.docx" download="blank-organizacii.docx">Скачать бланк организации (.docx)</a>
-          </p>
-        </div>
+        </details>
       </div>
     </section>
 
@@ -987,138 +1039,58 @@
         <p class="download-row">
           <a class="download-btn" href="oprosniki-i-shkaly.docx" download>Скачать таблицу (.docx)</a>
         </p>
-        <div class="groups-accordion">
-          <details class="group-item">
-            <summary>
-              <span class="group-title">COPM — канадская система оценки деятельности</span>
-              <span class="group-when">М. Николаева, О. Бояршинова</span>
-              <span class="group-toggle" aria-hidden="true">+</span>
-            </summary>
-            <div class="group-body">
-              <div class="group-field">
-                <p class="group-label">Кто уже пользовался</p>
-                <p><strong>М. Николаева</strong>, <strong>О. Бояршинова</strong></p>
-              </div>
-            </div>
-          </details>
-
-          <details class="group-item">
-            <summary>
-              <span class="group-title">Матрица коммуникации</span>
-              <span class="group-when">Коммуникативные возможности ребёнка</span>
-              <span class="group-toggle" aria-hidden="true">+</span>
-            </summary>
-            <div class="group-body">
-              <div class="group-field">
-                <p class="group-label">На что направлена</p>
-                <p>Коммуникативные возможности ребёнка</p>
-              </div>
-              <div class="group-field">
-                <p class="group-label">Кто уже пользовался</p>
-                <p><strong>О. Караневская</strong>, <strong>О. Бояршинова</strong></p>
-              </div>
-            </div>
-          </details>
-
-          <details class="group-item">
-            <summary>
-              <span class="group-title">Дорожная карта</span>
-              <span class="group-when">Коммуникативные возможности ребёнка</span>
-              <span class="group-toggle" aria-hidden="true">+</span>
-            </summary>
-            <div class="group-body">
-              <div class="group-field">
-                <p class="group-label">На что направлена</p>
-                <p>Коммуникативные возможности ребёнка</p>
-              </div>
-              <div class="group-field">
-                <p class="group-label">Кто уже пользовался</p>
-                <p><strong>М. Яремчук</strong>, <strong>Е. Вальковская</strong></p>
-              </div>
-            </div>
-          </details>
-
-          <details class="group-item">
-            <summary>
-              <span class="group-title">Конструктор целей</span>
-              <span class="group-when">Е. Просветова</span>
-              <span class="group-toggle" aria-hidden="true">+</span>
-            </summary>
-            <div class="group-body">
-              <div class="group-field">
-                <p class="group-label">Кто уже пользовался</p>
-                <p><strong>Е. Просветова</strong></p>
-              </div>
-            </div>
-          </details>
-
-          <details class="group-item">
-            <summary>
-              <span class="group-title">ICAN</span>
-              <span class="group-when">Бытовые навыки</span>
-              <span class="group-toggle" aria-hidden="true">+</span>
-            </summary>
-            <div class="group-body">
-              <div class="group-field">
-                <p class="group-label">На что направлена</p>
-                <p>Бытовые навыки</p>
-              </div>
-              <div class="group-field">
-                <p class="group-label">Кто уже пользовался</p>
-                <p><strong>Е. Федорова</strong>, <strong>Н. Мальцева</strong></p>
-              </div>
-            </div>
-          </details>
-
-          <details class="group-item">
-            <summary>
-              <span class="group-title">Чек-лист готовности к школе</span>
-              <span class="group-when">Готовность к обучению в школе</span>
-              <span class="group-toggle" aria-hidden="true">+</span>
-            </summary>
-            <div class="group-body">
-              <div class="group-field">
-                <p class="group-label">На что направлена</p>
-                <p>Готовность к обучению в школе</p>
-              </div>
-              <div class="group-field">
-                <p class="group-label">Кто уже пользовался</p>
-                <p><strong>Л. Егорова</strong>, <strong>Т. Бондарь</strong></p>
-              </div>
-            </div>
-          </details>
-
-          <details class="group-item">
-            <summary>
-              <span class="group-title">Опросник СДВГ</span>
-              <span class="group-when">Проявления СДВГ</span>
-              <span class="group-toggle" aria-hidden="true">+</span>
-            </summary>
-            <div class="group-body">
-              <div class="group-field">
-                <p class="group-label">На что направлена</p>
-                <p>Проявления СДВГ</p>
-              </div>
-              <div class="group-field">
-                <p class="group-label">Кто уже пользовался</p>
-                <p><strong>Е. Сафронова</strong>, <strong>Т. Котляренко</strong></p>
-              </div>
-            </div>
-          </details>
-
-          <details class="group-item">
-            <summary>
-              <span class="group-title">Опросник по сенсорной интеграции</span>
-              <span class="group-when">В. Литвинова, О. Семак</span>
-              <span class="group-toggle" aria-hidden="true">+</span>
-            </summary>
-            <div class="group-body">
-              <div class="group-field">
-                <p class="group-label">Кто уже пользовался</p>
-                <p><strong>В. Литвинова</strong>, <strong>О. Семак</strong></p>
-              </div>
-            </div>
-          </details>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col">Методика</th>
+                <th scope="col">На что направлена</th>
+                <th scope="col">Кто уже пользовался</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>COPM — канадская система оценки деятельности</td>
+                <td>—</td>
+                <td>М. Николаева, О. Бояршинова</td>
+              </tr>
+              <tr>
+                <td>Матрица коммуникации</td>
+                <td>Коммуникативные возможности ребёнка</td>
+                <td>О. Караневская, О. Бояршинова</td>
+              </tr>
+              <tr>
+                <td>Дорожная карта</td>
+                <td>Коммуникативные возможности ребёнка</td>
+                <td>М. Яремчук, Е. Вальковская</td>
+              </tr>
+              <tr>
+                <td>Конструктор целей</td>
+                <td>—</td>
+                <td>Е. Просветова</td>
+              </tr>
+              <tr>
+                <td>ICAN</td>
+                <td>Бытовые навыки</td>
+                <td>Е. Федорова, Н. Мальцева</td>
+              </tr>
+              <tr>
+                <td>Чек-лист готовности к школе</td>
+                <td>Готовность к обучению в школе</td>
+                <td>Л. Егорова, Т. Бондарь</td>
+              </tr>
+              <tr>
+                <td>Опросник СДВГ</td>
+                <td>Проявления СДВГ</td>
+                <td>Е. Сафронова, Т. Котляренко</td>
+              </tr>
+              <tr>
+                <td>Опросник по сенсорной интеграции</td>
+                <td>—</td>
+                <td>В. Литвинова, О. Семак</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
