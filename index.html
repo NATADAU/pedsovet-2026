@@ -160,6 +160,57 @@
     .phone + .phone { margin-top: 4px; }
     .phone:hover, .phone:focus-visible { color: var(--pink-100); }
     .disk { font-size: var(--medium); font-weight: 600; }
+    .download-row { margin-bottom: var(--pad); }
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: var(--body);
+      color: var(--paper);
+      background: var(--teal);
+      border: 1px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 12px 18px;
+      min-height: 44px;
+      text-decoration: none;
+    }
+    .download-btn:hover, .download-btn:focus-visible {
+      background: var(--blue-80);
+      border-color: var(--blue-80);
+      color: var(--paper);
+    }
+    .groups-grid { display: grid; gap: var(--pad); }
+    @media (min-width: 901px) {
+      .groups-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .group-card h3 { margin-bottom: 16px; }
+    .group-details { margin: 0; display: grid; gap: 14px; }
+    .group-row { min-width: 0; }
+    .group-row dt {
+      font-weight: 600;
+      font-size: var(--body);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin: 0 0 4px;
+    }
+    .group-row dd { margin: 0; color: var(--ink); }
+    .group-row dd + dd { margin-top: 4px; }
+    .group-time dd {
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+    .group-phone {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      color: var(--teal);
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+    }
+    .group-phone:hover, .group-phone:focus-visible { color: var(--pink-100); }
+    .group-note { color: var(--muted); font-size: var(--body); }
     .mt { margin-top: var(--pad); }
     .stack { display: grid; gap: var(--pad); }
     table {
@@ -289,6 +340,7 @@
         <a href="#timesheet">Табель</a>
         <a href="#guard">Охрана</a>
         <a href="#who">К кому идти</a>
+        <a href="#groups">Рабочие группы</a>
         <a href="#orders">Заказы</a>
         <a href="#photo">Фото</a>
         <a href="#tools">Опросники</a>
@@ -300,14 +352,14 @@
     <div class="wrap hero reveal">
       <h1>Педсовет</h1>
       <p class="meta">31 августа 2026 · Татьяна Бондарь</p>
-      <p class="lead">Табель, заказы, фото и к кому идти за ответом.</p>
+      <p class="lead">Табель, рабочие группы, заказы, фото и к кому идти за ответом.</p>
     </div>
 
     <section id="timesheet" class="reveal">
       <div class="wrap">
         <div class="section-head">
           <p class="kicker">Табель</p>
-          <h2>Пропуски — зло</h2>
+          <h2>Коды при пропуске</h2>
           <p>Если пропустили свой рабочий день, при заполнении табеля используем код. Сдаём в последний рабочий день месяца.</p>
         </div>
         <div class="stack">
@@ -318,7 +370,7 @@
             </article>
             <article class="card">
               <div class="code">УП</div>
-              <p class="code-note">По больничному — без ограничений. Без документа — до 3 дней в месяц, но не в один день недели.</p>
+              <p class="code-note">По больничному — без ограничений. Без документа — до 3 дней в месяц.</p>
             </article>
             <article class="card">
               <div class="code">К</div>
@@ -394,6 +446,142 @@
         </div>
         <div class="card mt">
           <p>Когда выступаете где-либо — говорите, пожалуйста, что работаете в ЦЛП и используйте логотип.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="groups" class="reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Рабочие группы</p>
+          <h2>2026–2027 учебный год</h2>
+          <p>Расписание встреч и контакты координаторов.</p>
+        </div>
+        <p class="download-row">
+          <a class="download-btn" href="rabochie-gruppy-2026-2027.docx" download>Скачать расписание (.docx)</a>
+        </p>
+        <div class="groups-grid">
+          <article class="card group-card">
+            <h3>Супервизии sbt</h3>
+            <dl class="group-details">
+              <div class="group-row">
+                <dt>О чём</dt>
+                <dd>Супервизионная группа по применению метода ПФА/ТОН. Обсуждаем текущие случаи, как это положено при супервизии в ТОН.</dd>
+              </div>
+              <div class="group-row group-time">
+                <dt>Время</dt>
+                <dd>Чт, 21:30–23:00</dd>
+              </div>
+              <div class="group-row">
+                <dt>Координатор</dt>
+                <dd>Боголюбова-Кузнецова Дарья</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="card group-card">
+            <h3>Интервизия по арт-терапии</h3>
+            <dl class="group-details">
+              <div class="group-row">
+                <dt>О чём</dt>
+                <dd>Обсуждаем случаи участников в области арт-терапии.</dd>
+              </div>
+              <div class="group-row group-time">
+                <dt>Время</dt>
+                <dd>Вторник, 1 раз в месяц, 21:30–23:00</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="card group-card">
+            <h3>Танцы</h3>
+            <dl class="group-details">
+              <div class="group-row">
+                <dt>О чём</dt>
+                <dd>Танцы народов мира: круговые, парные, для детей и для взрослых.</dd>
+              </div>
+              <div class="group-row">
+                <dt>Планы на год</dt>
+                <dd>Разучить танцы с семинара Имы Юрьевны Захаровой; освоить новые — с октября Има обещала раз в месяц показывать новые.</dd>
+              </div>
+              <div class="group-row group-time">
+                <dt>Время</dt>
+                <dd>2-й понедельник, 1 раз в месяц, Коньково, 18:15–19:15</dd>
+                <dd>1-я и 3-я среда, Строителей, 18:00</dd>
+              </div>
+              <div class="group-row">
+                <dt>Координаторы</dt>
+                <dd>Моржина Елена и Красильникова Рита <span class="group-note">(Коньково)</span></dd>
+                <dd><a class="group-phone" href="tel:+79057415334">8 905 741 53 34</a></dd>
+                <dd>Гончарова Женя <span class="group-note">(Строителей)</span></dd>
+                <dd><a class="group-phone" href="tel:+79167728901">8 916 772 89 01</a></dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="card group-card">
+            <h3>Игровая педагогика и средовой подход</h3>
+            <dl class="group-details">
+              <div class="group-row">
+                <dt>О чём</dt>
+                <dd>Супервизии для тех, кто играет, занимается, сопровождает, вписывает ребёнка: вместе про возможности и ограничения, задачи по развитию, маршрут ребёнка.</dd>
+              </div>
+              <div class="group-row">
+                <dt>Планы на год</dt>
+                <dd>Сделать обязательными разборы занятий для стажёров — в течение года.</dd>
+              </div>
+              <div class="group-row group-time">
+                <dt>Время</dt>
+                <dd>2-я и 4-я среда, 18:00, Zoom</dd>
+              </div>
+              <div class="group-row">
+                <dt>Координаторы</dt>
+                <dd>Моржина Е., Захарова И.</dd>
+                <dd><a class="group-phone" href="tel:+79057415334">8 905 741 53 34</a> <span class="group-note">(ТГ, WhatsApp)</span></dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="card group-card">
+            <h3>Евангельская группа</h3>
+            <dl class="group-details">
+              <div class="group-row">
+                <dt>О чём</dt>
+                <dd>Совместное чтение и размышление над подобранными отрывками: вместе ставим вопросы и вместе ищем ответы.</dd>
+              </div>
+              <div class="group-row">
+                <dt>Планы на год</dt>
+                <dd>Читать и размышлять, ходить на тематические встречи и экскурсии (например, в музей русской иконы), знакомиться с интересными людьми.</dd>
+              </div>
+              <div class="group-row group-time">
+                <dt>Время</dt>
+                <dd>По четвергам, Zoom, 21:30–22:30</dd>
+              </div>
+              <div class="group-row">
+                <dt>Координаторы</dt>
+                <dd>Моржина Е., Фионова О.</dd>
+                <dd><a class="group-phone" href="tel:+79057415334">8 905 741 53 34</a> <span class="group-note">(ТГ, WhatsApp)</span></dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="card group-card">
+            <h3>Дефектология</h3>
+            <dl class="group-details">
+              <div class="group-row">
+                <dt>О чём</dt>
+                <dd>Обсуждаем задачи, методы, приёмы, требования к уровню подготовки детей к школе, содержание и специфику учебных программ.</dd>
+              </div>
+              <div class="group-row">
+                <dt>Планы на год</dt>
+                <dd>Сделать чек-листы по вариантам разных программ. Обсуждать вопросы и задачи, искать хорошие идеи для трудных случаев — для молодых специалистов и тех, кто давно в теме.</dd>
+              </div>
+              <div class="group-row group-time">
+                <dt>Время</dt>
+                <dd>По вторникам, 1 раз в месяц, 20:30–21:30</dd>
+              </div>
+            </dl>
+          </article>
         </div>
       </div>
     </section>
