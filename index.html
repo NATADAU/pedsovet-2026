@@ -260,8 +260,11 @@
     #orders .card:focus-within { border-color: var(--pink-20); }
     #photo .card:hover,
     #photo .card:focus-within { border-color: var(--yellow-80); }
-    #tools tbody tr:hover { background: rgba(137, 189, 30, 0.12); }
-    #tools th { background: rgba(204, 213, 0, 0.22); color: var(--green-100); }
+    #tools .group-item[open] { border-color: var(--green-80); }
+    #tools .group-toggle { background: rgba(204, 213, 0, 0.28); color: var(--green-100); }
+    #tools .group-item[open] .group-toggle { background: var(--green-100); color: var(--paper); }
+    #tools .group-item summary:hover .group-title,
+    #tools .group-item summary:focus-visible .group-title { color: var(--green-100); }
     #groups .group-item[open] { border-color: var(--blue-80); }
     #groups .group-toggle { background: rgba(91, 190, 201, 0.25); }
     #end .section-head { border-left-color: var(--pink-100); }
@@ -408,31 +411,6 @@
     .group-lines > * + * { margin-top: 4px; }
     .mt { margin-top: var(--gap); }
     .stack { display: grid; gap: var(--gap); }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-    th, td {
-      text-align: left;
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--line);
-      vertical-align: top;
-    }
-    th {
-      font-size: var(--body);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--teal);
-      background: var(--blue-20);
-      font-weight: 600;
-    }
-    tr:last-child td { border-bottom: 0; }
-    tbody tr { transition: background 0.2s var(--ease); }
-    tbody tr:hover { background: rgba(199, 233, 237, 0.2); }
     footer {
       padding: 28px 0 36px;
       border-top: 1px solid var(--line);
@@ -534,31 +512,6 @@
       .group-body { padding: 14px 16px 16px; }
       .group-field { grid-template-columns: 1fr; gap: 4px; }
       .group-label { font-size: 14px; }
-      table, thead, tbody, th, td, tr { display: block; }
-      thead { display: none; }
-      table { background: transparent; border: 0; overflow: visible; }
-      tbody tr {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        padding: 12px;
-        margin-bottom: 10px;
-      }
-      tbody tr:last-child { margin-bottom: 0; }
-      tbody td { border: 0; padding: 6px 0; }
-      tbody td:first-child { font-weight: 600; color: var(--teal); }
-      tbody td[data-label]::before {
-        content: attr(data-label);
-        display: block;
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin-bottom: 2px;
-      }
-      tbody td:empty { display: none; }
-      tbody td:empty::after { content: none; }
     }
     @media (max-width: 640px) and (prefers-reduced-motion: no-preference) {
       .card:hover, .card:focus-within { transform: none; box-shadow: none; }
@@ -573,8 +526,7 @@
       .reveal.in { animation: revealIn 0.65s var(--ease) forwards; }
       .hero.reveal.in { animation: heroIn 0.8s var(--ease) forwards; }
       .reveal.in .card,
-      .reveal.in .group-item,
-      .reveal.in tbody tr {
+      .reveal.in .group-item {
         animation: itemIn 0.55s var(--ease) var(--stagger, 0ms) backwards;
       }
       .group-item[open] .group-body {
@@ -960,58 +912,141 @@
         <div class="section-head">
           <p class="kicker">Опросники</p>
           <h2>Опросники и шкалы оценок</h2>
+          <p>Методики, которые уже используют коллеги — можно спросить у них.</p>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Методика</th>
-              <th>На что направлена</th>
-              <th>Кто уже пользовался</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>COPM — канадская система оценки деятельности</td>
-              <td data-label="На что направлена"></td>
-              <td data-label="Кто уже пользовался">М. Николаева, О. Бояршинова</td>
-            </tr>
-            <tr>
-              <td>Матрица коммуникации</td>
-              <td data-label="На что направлена">Коммуникативные возможности ребёнка</td>
-              <td data-label="Кто уже пользовался">О. Караневская, О. Бояршинова</td>
-            </tr>
-            <tr>
-              <td>Дорожная карта</td>
-              <td data-label="На что направлена">Коммуникативные возможности ребёнка</td>
-              <td data-label="Кто уже пользовался">М. Яремчук, Е. Вальковская</td>
-            </tr>
-            <tr>
-              <td>Конструктор целей</td>
-              <td data-label="На что направлена"></td>
-              <td data-label="Кто уже пользовался">Е. Просветова</td>
-            </tr>
-            <tr>
-              <td>ICAN</td>
-              <td data-label="На что направлена">Бытовые навыки</td>
-              <td data-label="Кто уже пользовался">Е. Федорова, Н. Мальцева</td>
-            </tr>
-            <tr>
-              <td>Чек-лист готовности к школе</td>
-              <td data-label="На что направлена">Готовность к обучению в школе</td>
-              <td data-label="Кто уже пользовался">Л. Егорова, Т. Бондарь</td>
-            </tr>
-            <tr>
-              <td>Опросник СДВГ</td>
-              <td data-label="На что направлена">Проявления СДВГ</td>
-              <td data-label="Кто уже пользовался">Е. Сафронова, Т. Котляренко</td>
-            </tr>
-            <tr>
-              <td>Опросник по сенсорной интеграции</td>
-              <td data-label="На что направлена"></td>
-              <td data-label="Кто уже пользовался">В. Литвинова, О. Семак</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="groups-accordion">
+          <details class="group-item">
+            <summary>
+              <span class="group-title">COPM — канадская система оценки деятельности</span>
+              <span class="group-when">М. Николаева, О. Бояршинова</span>
+              <span class="group-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="group-body">
+              <div class="group-field">
+                <p class="group-label">Кто уже пользовался</p>
+                <p><strong>М. Николаева</strong>, <strong>О. Бояршинова</strong></p>
+              </div>
+            </div>
+          </details>
+
+          <details class="group-item">
+            <summary>
+              <span class="group-title">Матрица коммуникации</span>
+              <span class="group-when">Коммуникативные возможности ребёнка</span>
+              <span class="group-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="group-body">
+              <div class="group-field">
+                <p class="group-label">На что направлена</p>
+                <p>Коммуникативные возможности ребёнка</p>
+              </div>
+              <div class="group-field">
+                <p class="group-label">Кто уже пользовался</p>
+                <p><strong>О. Караневская</strong>, <strong>О. Бояршинова</strong></p>
+              </div>
+            </div>
+          </details>
+
+          <details class="group-item">
+            <summary>
+              <span class="group-title">Дорожная карта</span>
+              <span class="group-when">Коммуникативные возможности ребёнка</span>
+              <span class="group-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="group-body">
+              <div class="group-field">
+                <p class="group-label">На что направлена</p>
+                <p>Коммуникативные возможности ребёнка</p>
+              </div>
+              <div class="group-field">
+                <p class="group-label">Кто уже пользовался</p>
+                <p><strong>М. Яремчук</strong>, <strong>Е. Вальковская</strong></p>
+              </div>
+            </div>
+          </details>
+
+          <details class="group-item">
+            <summary>
+              <span class="group-title">Конструктор целей</span>
+              <span class="group-when">Е. Просветова</span>
+              <span class="group-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="group-body">
+              <div class="group-field">
+                <p class="group-label">Кто уже пользовался</p>
+                <p><strong>Е. Просветова</strong></p>
+              </div>
+            </div>
+          </details>
+
+          <details class="group-item">
+            <summary>
+              <span class="group-title">ICAN</span>
+              <span class="group-when">Бытовые навыки</span>
+              <span class="group-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="group-body">
+              <div class="group-field">
+                <p class="group-label">На что направлена</p>
+                <p>Бытовые навыки</p>
+              </div>
+              <div class="group-field">
+                <p class="group-label">Кто уже пользовался</p>
+                <p><strong>Е. Федорова</strong>, <strong>Н. Мальцева</strong></p>
+              </div>
+            </div>
+          </details>
+
+          <details class="group-item">
+            <summary>
+              <span class="group-title">Чек-лист готовности к школе</span>
+              <span class="group-when">Готовность к обучению в школе</span>
+              <span class="group-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="group-body">
+              <div class="group-field">
+                <p class="group-label">На что направлена</p>
+                <p>Готовность к обучению в школе</p>
+              </div>
+              <div class="group-field">
+                <p class="group-label">Кто уже пользовался</p>
+                <p><strong>Л. Егорова</strong>, <strong>Т. Бондарь</strong></p>
+              </div>
+            </div>
+          </details>
+
+          <details class="group-item">
+            <summary>
+              <span class="group-title">Опросник СДВГ</span>
+              <span class="group-when">Проявления СДВГ</span>
+              <span class="group-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="group-body">
+              <div class="group-field">
+                <p class="group-label">На что направлена</p>
+                <p>Проявления СДВГ</p>
+              </div>
+              <div class="group-field">
+                <p class="group-label">Кто уже пользовался</p>
+                <p><strong>Е. Сафронова</strong>, <strong>Т. Котляренко</strong></p>
+              </div>
+            </div>
+          </details>
+
+          <details class="group-item">
+            <summary>
+              <span class="group-title">Опросник по сенсорной интеграции</span>
+              <span class="group-when">В. Литвинова, О. Семак</span>
+              <span class="group-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="group-body">
+              <div class="group-field">
+                <p class="group-label">Кто уже пользовался</p>
+                <p><strong>В. Литвинова</strong>, <strong>О. Семак</strong></p>
+              </div>
+            </div>
+          </details>
+        </div>
       </div>
     </section>
 
@@ -1072,7 +1107,7 @@
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     function staggerChildren(section) {
-      section.querySelectorAll(".card, .group-item, tbody tr").forEach((el, i) => {
+      section.querySelectorAll(".card, .group-item").forEach((el, i) => {
         el.style.setProperty("--stagger", `${Math.min(i * 70, 420)}ms`);
       });
     }
