@@ -296,32 +296,44 @@
       background: var(--teal);
       border-color: var(--teal);
       box-shadow: 0 2px 8px rgba(1, 155, 171, 0.22);
+      color: #fff;
+      justify-content: center;
+      text-align: center;
+      white-space: normal;
+      line-height: 1.35;
     }
     #who .download-btn:hover,
     #who .download-btn:focus-visible {
       background: var(--blue-80);
       border-color: var(--blue-80);
       box-shadow: var(--shadow);
+      color: #fff;
     }
     .logo-preview {
-      display: inline-block;
+      display: block;
+      width: 100%;
+      max-width: 280px;
       margin-top: 14px;
       padding: 16px 20px;
       background: #fff;
       border: 1px solid var(--line);
       border-radius: var(--radius);
+      overflow: visible;
+      box-sizing: border-box;
     }
     .logo-preview img {
       display: block;
-      width: min(220px, 100%);
+      width: 100%;
+      max-width: 240px;
       height: auto;
+      margin: 0 auto;
     }
     .logo-plaque {
       margin-top: var(--head-gap);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--card);
-      overflow: hidden;
+      overflow: visible;
     }
     .logo-lead {
       margin: 0;
@@ -331,8 +343,16 @@
       color: var(--ink);
       border-bottom: 1px solid var(--line);
       text-wrap: wrap;
+      border-radius: var(--radius) var(--radius) 0 0;
     }
-    #who .logo-item { margin-top: 0; border: none; border-radius: 0; }
+    #who .logo-item { margin-top: 0; border: none; border-radius: 0; overflow: visible; }
+    #who .logo-item .group-body {
+      overflow: visible;
+      padding-bottom: 20px;
+    }
+    #who .logo-item[open] .group-body { animation: none; }
+    #who .logo-plaque .download-row { margin-bottom: 0; }
+    #who .logo-plaque .download-row--inline { margin-top: 16px; }
     #who .logo-item summary {
       grid-template-columns: minmax(0, 1fr) auto;
       align-items: start;
@@ -475,8 +495,12 @@
         flex-direction: column;
         gap: 8px;
       }
-      .download-row--inline .download-btn { width: 100%; }
+      .download-row--inline .download-btn { width: 100%; box-sizing: border-box; }
       .logo-lead { padding: 14px 16px; font-size: 15px; }
+      .logo-preview { max-width: none; padding: 14px 16px; }
+      .logo-preview img { max-width: 100%; }
+      #who .logo-item .group-body { padding: 14px 16px 18px; }
+      #who .download-btn { min-height: 48px; padding: 13px 16px; font-size: 15px; }
     }
     #orders .card:hover,
     #orders .card:focus-within { border-color: var(--pink-20); }
@@ -916,7 +940,7 @@
             </summary>
             <div class="group-body">
               <div class="logo-preview">
-                <img src="logotip-clp.png" alt="Логотип ЦЛП «Особое детство»" width="220" height="227">
+                <img src="logotip-clp.png" alt="Логотип ЦЛП «Особое детство»">
               </div>
               <p class="download-row download-row--inline">
                 <a class="download-btn" href="logotip-clp.png" download="logotip-clp.png">Скачать логотип (.png)</a>
