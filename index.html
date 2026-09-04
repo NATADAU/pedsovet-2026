@@ -355,8 +355,25 @@
       text-wrap: wrap;
       border-radius: var(--radius) var(--radius) 0 0;
     }
+    .logo-action {
+      padding: 16px 20px;
+      background: linear-gradient(180deg, rgba(199, 233, 237, 0.22) 0%, rgba(255, 255, 255, 0.9) 100%);
+      border-bottom: 1px solid var(--line);
+    }
+    .logo-action p {
+      margin: 0 0 12px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--teal);
+      line-height: 1.4;
+    }
+    #who .logo-plaque .logo-action .download-row {
+      margin: 0;
+    }
+    #who .logo-plaque .logo-action .download-row--inline {
+      margin-top: 0;
+    }
     .logo-details {
-      border-top: 1px solid var(--line);
       background: var(--card);
       overflow: visible;
     }
@@ -365,22 +382,42 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
       align-items: center;
-      gap: 12px;
-      padding: 16px 20px;
+      gap: 8px 12px;
+      padding: 14px 20px;
       cursor: pointer;
-      min-height: 44px;
+      min-height: 48px;
       font-size: var(--body);
       color: var(--ink);
+      background: rgba(199, 233, 237, 0.14);
+      border-left: 4px solid var(--teal);
       transition: background 0.2s var(--ease);
+    }
+    .logo-summary-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .logo-summary-hint {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.35;
     }
     .logo-details summary::-webkit-details-marker { display: none; }
     .logo-details summary::marker { content: ""; }
     .logo-details summary:hover,
     .logo-details summary:focus-visible { background: rgba(199, 233, 237, 0.25); }
     .logo-details[open] summary { border-bottom: 1px solid var(--line); }
-    .logo-details .group-toggle { background: rgba(91, 190, 201, 0.25); }
-    .logo-details[open] .group-toggle {
+    .logo-details .group-toggle {
       background: var(--teal);
+      color: var(--paper);
+      width: 32px;
+      height: 32px;
+      font-size: 22px;
+    }
+    .logo-details[open] .group-toggle {
+      background: var(--blue-80);
       color: var(--paper);
     }
     .logo-details-body {
@@ -607,6 +644,8 @@
         gap: 8px;
       }
       .download-row--inline .download-btn { width: 100%; box-sizing: border-box; }
+      .logo-action { padding: 14px 16px; }
+      .logo-details summary { padding: 12px 16px; }
       .logo-preview { padding: 12px; margin-inline: auto; }
       .logo-preview img { max-width: min(100%, calc(100vw - 72px)); }
       #who .download-btn { min-height: 48px; padding: 13px 16px; font-size: 15px; }
@@ -1048,19 +1087,25 @@
         </div>
         <div class="logo-plaque">
           <p class="logo-lead">Когда выступаете где-либо — говорите, пожалуйста, что работаете в ЦЛП и используйте логотип.</p>
+          <div class="logo-action">
+            <p>Скачать файлы</p>
+            <p class="download-row download-row--inline">
+              <a class="download-btn" href="logotip-clp.png?v=2" download="logotip-clp.png">Скачать логотип (.png)</a>
+              <a class="download-btn" href="blank-organizacii.docx" download="blank-organizacii.docx">Скачать бланк организации (.docx)</a>
+            </p>
+          </div>
           <details class="logo-details">
             <summary>
-              <span class="group-title">Логотип и бланк организации</span>
+              <span class="logo-summary-text">
+                <span class="group-title">Посмотреть логотип</span>
+                <span class="logo-summary-hint">Нажмите, чтобы увидеть, как он выглядит</span>
+              </span>
               <span class="group-toggle" aria-hidden="true">+</span>
             </summary>
             <div class="logo-details-body">
               <div class="logo-preview">
                 <img src="logotip-clp.png?v=2" alt="Логотип ЦЛП «Особое детство»" width="402" height="415">
               </div>
-              <p class="download-row download-row--inline">
-                <a class="download-btn" href="logotip-clp.png?v=2" download="logotip-clp.png">Скачать логотип (.png)</a>
-                <a class="download-btn" href="blank-organizacii.docx" download="blank-organizacii.docx">Скачать бланк организации (.docx)</a>
-              </p>
             </div>
           </details>
         </div>
