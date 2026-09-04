@@ -221,6 +221,7 @@
     #guard { --accent: var(--blue-100); --accent-soft: rgba(199, 233, 237, 0.45); }
     #who { --accent: var(--green-100); --accent-soft: rgba(4, 166, 52, 0.08); }
     #groups { --accent: var(--blue-80); --accent-soft: rgba(91, 190, 201, 0.14); }
+    #holidays { --accent: var(--yellow-100); --accent-soft: rgba(248, 166, 0, 0.08); }
     #orders { --accent: var(--pink-100); --accent-soft: rgba(229, 0, 79, 0.07); }
     #photo { --accent: var(--yellow-80); --accent-soft: rgba(252, 186, 0, 0.1); }
     #tools { --accent: var(--green-80); --accent-soft: rgba(137, 189, 30, 0.1); }
@@ -373,6 +374,93 @@
     @media (max-width: 640px) {
       .data-table th,
       .data-table td { padding: 12px 14px; font-size: 14px; }
+    }
+    .timeline {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 4px;
+      display: grid;
+      gap: 0;
+      position: relative;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 11px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(180deg, #F8A600 0%, #5BBEC9 25%, #9B8BC4 50%, #04A634 75%, #FCBA00 100%);
+      border-radius: 999px;
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      gap: 16px;
+      padding-bottom: 14px;
+      position: relative;
+      --item-accent: var(--teal);
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-marker {
+      width: 14px;
+      height: 14px;
+      margin-top: 18px;
+      margin-left: 5px;
+      border-radius: 50%;
+      background: var(--item-accent);
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px var(--item-accent);
+      z-index: 1;
+    }
+    .timeline-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--item-accent);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      min-width: 0;
+    }
+    .timeline-season {
+      margin: 0 0 4px;
+      font-weight: 600;
+      font-size: var(--body);
+      color: var(--ink);
+    }
+    .timeline-dates {
+      margin: 0;
+      font-size: var(--medium);
+      line-height: 1.35;
+      color: var(--ink);
+    }
+    .timeline-dates span {
+      font-weight: 600;
+      font-size: clamp(28px, 4vw, 36px);
+      letter-spacing: -0.02em;
+      color: var(--item-accent);
+      margin-right: 0.15em;
+    }
+    .timeline-footnote {
+      margin: 6px 0 0;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .timeline-note {
+      margin: 4px 0 var(--head-gap);
+      padding: 12px 14px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.45;
+      background: rgba(91, 190, 201, 0.12);
+      border-radius: var(--radius);
+      border-left: 3px solid var(--blue-80);
+    }
+    @media (max-width: 640px) {
+      .timeline-item { grid-template-columns: 24px minmax(0, 1fr); gap: 12px; }
+      .timeline::before { left: 9px; }
+      .timeline-marker { margin-left: 3px; margin-top: 16px; }
+      .timeline-card { padding: 12px 14px; }
     }
     .download-row--inline {
       display: flex;
@@ -658,7 +746,8 @@
       .reveal.in { animation: revealIn 0.65s var(--ease) forwards; }
       .hero.reveal.in { animation: heroIn 0.8s var(--ease) forwards; }
       .reveal.in .card,
-      .reveal.in .group-item {
+      .reveal.in .group-item,
+      .reveal.in .timeline-item {
         animation: itemIn 0.55s var(--ease) var(--stagger, 0ms) backwards;
       }
       .group-item[open] .group-body {
@@ -695,6 +784,7 @@
         <a href="#guard">Телефоны охраны</a>
         <a href="#who">К кому идти</a>
         <a href="#groups">Рабочие группы</a>
+        <a href="#holidays">Каникулы</a>
         <a href="#orders">Заказы</a>
         <a href="#photo">Фото</a>
         <a href="#tools">Опросники</a>
@@ -715,7 +805,7 @@
         <span class="hero-title-accent">памятка ЦЛП</span>
       </h1>
       <p class="meta">31 августа 2026 · Татьяна Бондарь</p>
-      <p class="lead">Табель, рабочие группы, заказы, фото и к кому идти за ответом.</p>
+      <p class="lead">Табель, каникулы, рабочие группы, заказы, фото и к кому идти за ответом.</p>
     </div>
 
     <section id="timesheet" class="reveal">
@@ -1004,6 +1094,56 @@
       </div>
     </section>
 
+    <section id="holidays" class="reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Каникулы</p>
+          <h2>Расписание на 2026–2027 учебный год</h2>
+        </div>
+        <ol class="timeline">
+          <li class="timeline-item" style="--item-accent: #F8A600">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <article class="timeline-card">
+              <p class="timeline-season">Осенние каникулы</p>
+              <p class="timeline-dates"><span>2–8</span> ноября 2026</p>
+            </article>
+          </li>
+          <li class="timeline-item" style="--item-accent: #019BAB">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <article class="timeline-card">
+              <p class="timeline-season">Зимние каникулы</p>
+              <p class="timeline-dates"><span>29*</span> декабря 2026 — <span>10</span> января 2027</p>
+              <p class="timeline-footnote">* 29 декабря — рабочий день для педагогов и административных сотрудников</p>
+            </article>
+          </li>
+          <li class="timeline-item" style="--item-accent: #8B7EC8">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <article class="timeline-card">
+              <p class="timeline-season">Выходные дни</p>
+              <p class="timeline-dates"><span>22–23</span> февраля 2027</p>
+            </article>
+          </li>
+          <li class="timeline-item" style="--item-accent: #04A634">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <article class="timeline-card">
+              <p class="timeline-season">Весенние каникулы</p>
+              <p class="timeline-dates"><span>8–14</span> марта 2027</p>
+            </article>
+          </li>
+          <li class="timeline-item" style="--item-accent: #FCBA00">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <article class="timeline-card">
+              <p class="timeline-season">Майские каникулы</p>
+              <p class="timeline-dates"><span>3–9</span> мая 2027</p>
+            </article>
+          </li>
+        </ol>
+        <p class="download-row">
+          <a class="download-btn" href="kanikuly-2026-2027.pdf" download="kanikuly-2026-2027.pdf">Скачать объявление (.pdf)</a>
+        </p>
+      </div>
+    </section>
+
     <section id="orders" class="reveal">
       <div class="wrap">
         <div class="section-head">
@@ -1181,7 +1321,7 @@
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     function staggerChildren(section) {
-      section.querySelectorAll(".card, .group-item").forEach((el, i) => {
+      section.querySelectorAll(".card, .group-item, .timeline-item").forEach((el, i) => {
         el.style.setProperty("--stagger", `${Math.min(i * 70, 420)}ms`);
       });
     }
