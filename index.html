@@ -46,7 +46,7 @@
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; overflow-x: clip; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       margin: 0;
       background:
@@ -59,8 +59,10 @@
       font-size: var(--body);
       font-weight: 400;
       line-height: 1.5;
-      overflow-x: clip;
+      overflow-x: hidden;
+      max-width: 100%;
     }
+    img { max-width: 100%; height: auto; }
     header {
       position: sticky;
       top: 0;
@@ -309,19 +311,21 @@
       box-shadow: var(--shadow);
       color: #fff;
     }
-    #who { overflow: visible; }
+    #who { overflow: visible; max-width: 100%; }
+    #who .wrap { max-width: 100%; }
     .logo-plaque,
     .logo-details,
     .logo-details-body {
       min-width: 0;
       max-width: 100%;
+      box-sizing: border-box;
     }
     .logo-preview {
       display: block;
       width: 100%;
       max-width: 100%;
       margin-top: 14px;
-      padding: 16px;
+      padding: 12px;
       background: #fff;
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -330,11 +334,13 @@
     }
     .logo-preview img {
       display: block;
-      width: 100%;
-      max-width: 280px;
+      width: auto;
+      max-width: 100%;
       height: auto;
       margin-inline: auto;
-      object-fit: contain;
+      vertical-align: top;
+      -webkit-user-select: none;
+      user-select: none;
     }
     .logo-plaque {
       margin-top: var(--head-gap);
@@ -384,6 +390,7 @@
     .logo-details-body {
       overflow: visible;
       padding: 16px 20px 20px;
+      box-sizing: border-box;
     }
     #who .logo-plaque .download-row { margin-bottom: 0; }
     #who .logo-plaque .download-row--inline { margin-top: 16px; }
@@ -604,12 +611,21 @@
         gap: 8px;
       }
       .download-row--inline .download-btn { width: 100%; box-sizing: border-box; }
+      .logo-preview { padding: 10px; }
+      .logo-details-body { padding: 12px 12px 16px; }
       .logo-lead { padding: 14px 16px; font-size: 15px; }
-      .logo-preview { padding: 12px; }
-      .logo-preview img { max-width: 100%; width: 100%; }
       .logo-details summary { padding: 14px 16px; }
-      .logo-details-body { padding: 14px 16px 18px; }
+      .logo-preview img {
+        width: auto;
+        max-width: 100%;
+        max-height: none;
+      }
       #who .download-btn { min-height: 48px; padding: 13px 16px; font-size: 15px; }
+      #who.reveal,
+      #who.reveal.in {
+        transform: none;
+        opacity: 1;
+      }
     }
     #orders .card:hover,
     #orders .card:focus-within { border-color: var(--pink-20); }
