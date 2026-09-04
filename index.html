@@ -391,9 +391,88 @@
     .data-table td:first-child { font-weight: 600; min-width: 220px; }
     .data-table td:nth-child(2) { color: var(--muted); min-width: 200px; }
     .data-table td:nth-child(3) { min-width: 180px; }
+    #tools .table-wrap {
+      position: relative;
+    }
+    .table-scroll-hint {
+      display: none;
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    @media (max-width: 900px) and (min-width: 769px) {
+      #tools .table-scroll-hint { display: block; }
+      #tools .table-wrap {
+        overflow-x: auto;
+        scrollbar-gutter: stable;
+        box-shadow: inset -10px 0 12px -10px rgba(1, 155, 171, 0.12);
+      }
+    }
+    @media (max-width: 768px) {
+      #tools .table-scroll-hint { display: none; }
+      #tools .table-wrap {
+        overflow: visible;
+        border: none;
+        background: transparent;
+        box-shadow: none;
+      }
+      #tools .data-table {
+        min-width: 0;
+        display: block;
+      }
+      #tools .data-table thead { display: none; }
+      #tools .data-table tbody {
+        display: grid;
+        gap: 12px;
+      }
+      #tools .data-table tr {
+        display: block;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--card);
+        padding: 14px 16px;
+        box-shadow: var(--shadow);
+      }
+      #tools .data-table td {
+        display: block;
+        min-width: 0 !important;
+        padding: 0;
+        border: none;
+        background: transparent !important;
+        font-weight: 400;
+        color: var(--ink);
+      }
+      #tools .data-table td:first-child {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 1.35;
+        margin-bottom: 10px;
+        color: var(--ink);
+      }
+      #tools .data-table td + td {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid var(--line);
+      }
+      #tools .data-table td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 4px;
+        font-weight: 600;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--green-100);
+      }
+      #tools .data-table td:first-child::before { display: none; }
+      #tools .data-table td:nth-child(2) { color: var(--muted); }
+    }
     @media (max-width: 640px) {
       .data-table th,
       .data-table td { padding: 12px 14px; font-size: 14px; }
+      #tools .data-table td:first-child { font-size: 15px; }
+      #tools .data-table tr { padding: 12px 14px; }
     }
     .timeline {
       list-style: none;
@@ -781,7 +860,8 @@
       .hero.reveal.in { animation: heroIn 0.8s var(--ease) forwards; }
       .reveal.in .card,
       .reveal.in .group-item,
-      .reveal.in .timeline-item {
+      .reveal.in .timeline-item,
+      .reveal.in #tools .data-table tbody tr {
         animation: itemIn 0.55s var(--ease) var(--stagger, 0ms) backwards;
       }
       .group-item[open] .group-body {
@@ -1242,6 +1322,7 @@
         <p class="download-row">
           <a class="download-btn" href="oprosniki-i-shkaly.docx" download>Скачать таблицу (.docx)</a>
         </p>
+        <p class="table-scroll-hint">Таблицу можно пролистать вправо →</p>
         <div class="table-wrap">
           <table class="data-table">
             <thead>
@@ -1254,43 +1335,43 @@
             <tbody>
               <tr>
                 <td>COPM — канадская система оценки деятельности</td>
-                <td>—</td>
-                <td>М. Николаева, О. Бояршинова</td>
+                <td data-label="На что направлена">—</td>
+                <td data-label="Кто уже пользовался">М. Николаева, О. Бояршинова</td>
               </tr>
               <tr>
                 <td>Матрица коммуникации</td>
-                <td>Коммуникативные возможности ребёнка</td>
-                <td>О. Караневская, О. Бояршинова</td>
+                <td data-label="На что направлена">Коммуникативные возможности ребёнка</td>
+                <td data-label="Кто уже пользовался">О. Караневская, О. Бояршинова</td>
               </tr>
               <tr>
                 <td>Дорожная карта</td>
-                <td>Коммуникативные возможности ребёнка</td>
-                <td>М. Яремчук, Е. Вальковская</td>
+                <td data-label="На что направлена">Коммуникативные возможности ребёнка</td>
+                <td data-label="Кто уже пользовался">М. Яремчук, Е. Вальковская</td>
               </tr>
               <tr>
                 <td>Конструктор целей</td>
-                <td>—</td>
-                <td>Е. Просветова</td>
+                <td data-label="На что направлена">—</td>
+                <td data-label="Кто уже пользовался">Е. Просветова</td>
               </tr>
               <tr>
                 <td>ICAN</td>
-                <td>Бытовые навыки</td>
-                <td>Е. Федорова, Н. Мальцева</td>
+                <td data-label="На что направлена">Бытовые навыки</td>
+                <td data-label="Кто уже пользовался">Е. Федорова, Н. Мальцева</td>
               </tr>
               <tr>
                 <td>Чек-лист готовности к школе</td>
-                <td>Готовность к обучению в школе</td>
-                <td>Л. Егорова, Т. Бондарь</td>
+                <td data-label="На что направлена">Готовность к обучению в школе</td>
+                <td data-label="Кто уже пользовался">Л. Егорова, Т. Бондарь</td>
               </tr>
               <tr>
                 <td>Опросник СДВГ</td>
-                <td>Проявления СДВГ</td>
-                <td>Е. Сафронова, Т. Котляренко</td>
+                <td data-label="На что направлена">Проявления СДВГ</td>
+                <td data-label="Кто уже пользовался">Е. Сафронова, Т. Котляренко</td>
               </tr>
               <tr>
                 <td>Опросник по сенсорной интеграции</td>
-                <td>—</td>
-                <td>В. Литвинова, О. Семак</td>
+                <td data-label="На что направлена">—</td>
+                <td data-label="Кто уже пользовался">В. Литвинова, О. Семак</td>
               </tr>
             </tbody>
           </table>
@@ -1355,7 +1436,7 @@
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     function staggerChildren(section) {
-      section.querySelectorAll(".card, .group-item, .timeline-item").forEach((el, i) => {
+      section.querySelectorAll(".card, .group-item, .timeline-item, #tools .data-table tbody tr").forEach((el, i) => {
         el.style.setProperty("--stagger", `${Math.min(i * 70, 420)}ms`);
       });
     }
