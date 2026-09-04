@@ -310,10 +310,14 @@
       color: #fff;
     }
     #who { overflow: visible; }
+    .logo-plaque,
+    .logo-details,
+    .logo-details-body {
+      min-width: 0;
+      max-width: 100%;
+    }
     .logo-preview {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: block;
       width: 100%;
       max-width: 100%;
       margin-top: 14px;
@@ -321,14 +325,15 @@
       background: #fff;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      overflow: visible;
       box-sizing: border-box;
+      text-align: center;
     }
     .logo-preview img {
       display: block;
-      width: auto;
-      max-width: min(280px, 100%);
+      width: 100%;
+      max-width: 280px;
       height: auto;
+      margin-inline: auto;
       object-fit: contain;
     }
     .logo-plaque {
@@ -601,7 +606,7 @@
       .download-row--inline .download-btn { width: 100%; box-sizing: border-box; }
       .logo-lead { padding: 14px 16px; font-size: 15px; }
       .logo-preview { padding: 12px; }
-      .logo-preview img { max-width: 100%; }
+      .logo-preview img { max-width: 100%; width: 100%; }
       .logo-details summary { padding: 14px 16px; }
       .logo-details-body { padding: 14px 16px 18px; }
       #who .download-btn { min-height: 48px; padding: 13px 16px; font-size: 15px; }
