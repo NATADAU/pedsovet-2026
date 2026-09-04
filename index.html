@@ -461,12 +461,22 @@
       .timeline::before { left: 9px; }
       .timeline-marker { margin-left: 3px; margin-top: 16px; }
       .timeline-card { padding: 12px 14px; }
+      .timeline-dates { font-size: 16px; line-height: 1.4; }
+      .timeline-dates span { font-size: clamp(22px, 6.5vw, 32px); }
     }
     .download-row--inline {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 14px;
+    }
+    @media (max-width: 640px) {
+      .download-row--inline {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .download-row--inline .download-btn { width: 100%; }
+      .logo-lead { padding: 14px 16px; font-size: 15px; }
     }
     #orders .card:hover,
     #orders .card:focus-within { border-color: var(--pink-20); }
@@ -663,7 +673,7 @@
         flex-direction: column;
         gap: 0;
         z-index: 21;
-        max-height: min(70dvh, 420px);
+        max-height: min(78dvh, 480px);
         overflow-y: auto;
         box-shadow: var(--shadow);
       }
@@ -931,7 +941,7 @@
         <div class="groups-accordion">
           <details class="group-item">
             <summary>
-              <span class="group-title">Супервизии sbt</span>
+              <span class="group-title">Супервизии SBT</span>
               <span class="group-when">Четверг, 21:30–23:00</span>
               <span class="group-toggle" aria-hidden="true">+</span>
             </summary>
